@@ -1,0 +1,62 @@
+[gd_scene load_steps=4 format=3 uid="uid://dfdc8m4o3u2j4"]
+
+[ext_resource type="Script" path="res://scenes/Manual.gd" id="1_ebhdm"]
+[ext_resource type="Texture2D" uid="uid://dh3mlfs6d0uyb" path="res://sprites/spritesheet.png" id="2_jqre2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ngoo3"]
+atlas = ExtResource("2_jqre2")
+region = Rect2(429, 9, 201, 249)
+
+[node name="Manual" type="Node2D"]
+script = ExtResource("1_ebhdm")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+offset_right = 475.0
+offset_bottom = 767.0
+texture = SubResource("AtlasTexture_ngoo3")
+region_rect = Rect2(0, 0, 201, 249)
+patch_margin_left = 56
+patch_margin_top = 33
+patch_margin_right = 81
+patch_margin_bottom = 81
+
+[node name="Text" type="Label" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 26.0
+offset_right = 460.0
+offset_bottom = 673.0
+text = "Congratulations citizen #332452 on winning the annual national employment raffle! For the forseeable future, you will be solely responsible for the operation and maintenace of this T-23-X4 Nuclear Processing and Enrichment Reactor. 
+
+This manual will cover the neccessary debugging and  corrections in the event of manual intervention for the Enrichment Reactor. Failure to strictly adhere to this manual will result in reactor overload and catastrophic meltdown.
+
+Overload Failsafe
+
+The reactors capacitors have the capability to store excess power during a system alarm. In the event  that the capacitors are go beyond their stated safe usage, the reactor will be immediately shut down. It is your responsibility to ensure this never happens. 
+
+Safety and Alarms
+
+In extremely rare circumstances the system may require human input and will alert via an LED illuminating in a alarms panel. Find the problem instrument and refer to the rest of the instruction manual as to how to diagnose this alarm and bring the system back to nominal working order.
+
+Alarms
+
+"
+autowrap_mode = 2
+max_lines_visible = 25
+
+[node name="NextButton" type="Button" parent="."]
+offset_left = 341.0
+offset_top = 690.0
+offset_right = 450.0
+offset_bottom = 723.0
+text = "Next"
+
+[node name="PreviousButton" type="Button" parent="."]
+offset_left = 13.0
+offset_top = 690.0
+offset_right = 122.0
+offset_bottom = 723.0
+text = "Previous"
+
+[connection signal="pressed" from="NextButton" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="PreviousButton" to="." method="_on_previous_button_pressed"]

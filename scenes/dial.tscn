@@ -1,0 +1,80 @@
+[gd_scene load_steps=7 format=3 uid="uid://cjnr1s5yd3jrj"]
+
+[ext_resource type="Script" path="res://scenes/Dial.gd" id="1_mvgfb"]
+[ext_resource type="Texture2D" uid="uid://dh3mlfs6d0uyb" path="res://sprites/spritesheet.png" id="2_7r1vm"]
+[ext_resource type="FontFile" uid="uid://enfp4afuixsa" path="res://sprites/m5x7.ttf" id="3_t2gv4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_has0h"]
+atlas = ExtResource("2_7r1vm")
+region = Rect2(315, 195, 84, 63)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lo2n0"]
+atlas = ExtResource("2_7r1vm")
+region = Rect2(411, 222, 6, 18)
+
+[sub_resource type="LabelSettings" id="LabelSettings_toyge"]
+font = ExtResource("3_t2gv4")
+font_size = 24
+font_color = Color(0.219608, 0.219608, 0.219608, 1)
+
+[node name="Dial" type="Node2D" groups=["indicator"]]
+script = ExtResource("1_mvgfb")
+
+[node name="TextureButton" type="TextureButton" parent="."]
+offset_left = 39.0
+offset_top = 24.0
+offset_right = 123.0
+offset_bottom = 87.0
+texture_normal = SubResource("AtlasTexture_has0h")
+
+[node name="DialLine" type="Sprite2D" parent="."]
+position = Vector2(82, 64)
+texture = SubResource("AtlasTexture_lo2n0")
+offset = Vector2(0, -9)
+
+[node name="Label" type="Label" parent="."]
+offset_left = -1.0
+offset_top = 52.0
+offset_right = 39.0
+offset_bottom = 75.0
+text = "D4"
+label_settings = SubResource("LabelSettings_toyge")
+horizontal_alignment = 2
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 33.0
+offset_top = 10.0
+offset_right = 73.0
+offset_bottom = 33.0
+text = "D4"
+label_settings = SubResource("LabelSettings_toyge")
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="."]
+offset_left = 64.0
+offset_top = 1.0
+offset_right = 104.0
+offset_bottom = 24.0
+text = "D4"
+label_settings = SubResource("LabelSettings_toyge")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Label4" type="Label" parent="."]
+offset_left = 91.0
+offset_top = 13.0
+offset_right = 131.0
+offset_bottom = 36.0
+text = "D4"
+label_settings = SubResource("LabelSettings_toyge")
+horizontal_alignment = 1
+
+[node name="Label5" type="Label" parent="."]
+offset_left = 126.0
+offset_top = 52.0
+offset_right = 166.0
+offset_bottom = 75.0
+text = "D4"
+label_settings = SubResource("LabelSettings_toyge")
+
+[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]

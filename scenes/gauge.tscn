@@ -8,18 +8,19 @@
 atlas = ExtResource("1_4xa8j")
 region = Rect2(243, 3, 135, 135)
 
-[node name="Gauge" type="Node2D"]
+[node name="Gauge" type="Node2D" groups=["faultable"]]
 position = Vector2(69, 68)
 script = ExtResource("1_rhabp")
 value = 68
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(0, 28.5)
 texture = SubResource("AtlasTexture_81erd")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-offset_top = -2.0
+offset_top = 26.5
 offset_right = 48.0
-offset_bottom = 1.0
+offset_bottom = 29.5
 rotation = -2.85361
 pivot_offset = Vector2(0, 1.5)
 color = Color(0.407843, 0.435294, 0.4, 1)
@@ -29,6 +30,14 @@ wait_time = 0.324
 autostart = true
 
 [node name="LED" parent="." instance=ExtResource("3_w0pqo")]
-position = Vector2(0, 92)
+position = Vector2(0, 120.5)
+
+[node name="Label" type="Label" parent="."]
+offset_left = -67.0
+offset_top = -67.0
+offset_right = 68.0
+offset_bottom = -44.0
+text = "F22"
+horizontal_alignment = 1
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

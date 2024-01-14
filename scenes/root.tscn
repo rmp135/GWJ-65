@@ -1,14 +1,29 @@
-[gd_scene load_steps=7 format=3 uid="uid://d4kvb2gxy0lg8"]
+[gd_scene load_steps=12 format=3 uid="uid://d4kvb2gxy0lg8"]
 
 [ext_resource type="Texture2D" uid="uid://dh3mlfs6d0uyb" path="res://sprites/spritesheet.png" id="1_2oaot"]
 [ext_resource type="PackedScene" uid="uid://c3p3nco4j15tj" path="res://scenes/button_led.tscn" id="1_snc5b"]
-[ext_resource type="Script" path="res://scenes/Manual.gd" id="4_5qtg0"]
+[ext_resource type="Script" path="res://scenes/FaultManager.gd" id="1_wbqnj"]
+[ext_resource type="PackedScene" uid="uid://dfdc8m4o3u2j4" path="res://scenes/manual.tscn" id="3_dsrae"]
 [ext_resource type="PackedScene" uid="uid://dbqnwg310e52t" path="res://scenes/gauge.tscn" id="4_n6vnv"]
-[ext_resource type="PackedScene" uid="uid://bi4spfdfn8pqe" path="res://scenes/led.tscn" id="5_hr7x4"]
+[ext_resource type="PackedScene" uid="uid://cjnr1s5yd3jrj" path="res://scenes/dial.tscn" id="6_gwqmf"]
+[ext_resource type="FontFile" uid="uid://enfp4afuixsa" path="res://sprites/m5x7.ttf" id="6_x2cfr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dluik"]
 atlas = ExtResource("1_2oaot")
 region = Rect2(0, 0, 240, 147)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s1nmo"]
+atlas = ExtResource("1_2oaot")
+region = Rect2(168, 150, 69, 66)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wn1iq"]
+atlas = ExtResource("1_2oaot")
+region = Rect2(240, 150, 69, 66)
+
+[sub_resource type="LabelSettings" id="LabelSettings_a304f"]
+font = ExtResource("6_x2cfr")
+font_size = 22
+font_color = Color(0.270588, 0.270588, 0.270588, 1)
 
 [node name="Root" type="Node2D"]
 
@@ -28,92 +43,132 @@ position = Vector2(30, 356)
 
 [node name="ButtonLED" parent="Node2D" instance=ExtResource("1_snc5b")]
 position = Vector2(13, 0)
-text = "BUT"
 
 [node name="ButtonLED2" parent="Node2D" instance=ExtResource("1_snc5b")]
-position = Vector2(66, 0)
-text = "BUT"
+position = Vector2(86, 1)
 
 [node name="ButtonLED3" parent="Node2D" instance=ExtResource("1_snc5b")]
-position = Vector2(121, 0)
-text = "BUT"
+position = Vector2(159, 0)
 
 [node name="ButtonLED4" parent="Node2D" instance=ExtResource("1_snc5b")]
-position = Vector2(13, 54)
-text = "BUT"
+position = Vector2(13, 73)
 
 [node name="ButtonLED5" parent="Node2D" instance=ExtResource("1_snc5b")]
-position = Vector2(66, 54)
-text = "BUT"
+position = Vector2(86, 74)
 
 [node name="ButtonLED6" parent="Node2D" instance=ExtResource("1_snc5b")]
-position = Vector2(121, 54)
-text = "BUT"
+position = Vector2(159, 73)
 
 [node name="ButtonLED7" parent="Node2D" instance=ExtResource("1_snc5b")]
-position = Vector2(13, 109)
-text = "BUT"
+position = Vector2(13, 146)
 
 [node name="ButtonLED8" parent="Node2D" instance=ExtResource("1_snc5b")]
-position = Vector2(66, 109)
-text = "BUT"
+position = Vector2(86, 147)
 
 [node name="ButtonLED9" parent="Node2D" instance=ExtResource("1_snc5b")]
-position = Vector2(121, 109)
-text = "BUT"
+position = Vector2(159, 146)
 
-[node name="Manual" type="Node2D" parent="."]
-script = ExtResource("4_5qtg0")
-
-[node name="Text" type="Label" parent="Manual"]
-offset_left = 799.0
-offset_top = -1.0
-offset_right = 1268.0
-offset_bottom = 672.0
-text = "Congratulations Citizen #332452 on winning the annual national employment raffle! For the forseeable future, you will be solely responsible for the operation and maintenace of this T-23-X4 Nuclear Processing and Enrichment Reactor. 
-
-This manual will cover the neccessary debugging and  corrections in the event of manual intervention for the Enrichment Reactor. Failure to strictly adhere to this manual will result in reactor overload and catastrophic meltdown.
-
-Overload Failsafe
-
-The reactors capacitors have the capability to store excess power during a system alarm. In the event  that the capacitors are go beyond their stated safe usage, the reactor will be immediately shut down. It is your responsibility to ensure this never happens. 
-
-Safety and Alarms
-
-In extremely rare circumstances the system may require human input and will alert via an LED illuminating in a alarms panel. Find the problem instrument and refer to the rest of the instruction manual as to how to diagnose this alarm and bring the system back to nominal working order.
-
-Alarms
-
-FIP Gauge
-The following push button LEDs must be enabled: FOP, DID, LAP. Key DAP to the K2 position. Enter the following into the keypad input: 33423 and press Enter.
-
-DOP Gauge"
-autowrap_mode = 2
-max_lines_visible = 25
-
-[node name="NextButton" type="Button" parent="Manual"]
-offset_left = 1140.0
-offset_top = 689.0
-offset_right = 1249.0
-offset_bottom = 722.0
-text = "Next"
-
-[node name="PreviousButton" type="Button" parent="Manual"]
-offset_left = 812.0
-offset_top = 689.0
-offset_right = 921.0
-offset_bottom = 722.0
-text = "Previous"
+[node name="Manual" parent="." instance=ExtResource("3_dsrae")]
+position = Vector2(800, 0)
 
 [node name="Gauge" parent="." instance=ExtResource("4_n6vnv")]
 position = Vector2(81, 79)
-is_faulting = true
 
 [node name="Gauge2" parent="." instance=ExtResource("4_n6vnv")]
 position = Vector2(245, 79)
 
-[node name="LED" parent="." instance=ExtResource("5_hr7x4")]
-position = Vector2(468, 160)
+[node name="FaultManager" type="Node" parent="." node_paths=PackedStringArray("manual")]
+script = ExtResource("1_wbqnj")
+manual = NodePath("../Manual")
 
-[connection signal="pressed" from="Manual/NextButton" to="Manual" method="_on_button_pressed"]
-[connection signal="pressed" from="Manual/PreviousButton" to="Manual" method="_on_previous_button_pressed"]
+[node name="FaultTimer" type="Timer" parent="FaultManager"]
+wait_time = 5.0
+autostart = true
+
+[node name="Dial" parent="." instance=ExtResource("6_gwqmf")]
+position = Vector2(34, 577)
+
+[node name="Dial2" parent="." instance=ExtResource("6_gwqmf")]
+position = Vector2(185, 578)
+
+[node name="Numpad" type="Node2D" parent="."]
+
+[node name="EnterButton" type="TextureButton" parent="Numpad"]
+offset_left = 468.0
+offset_top = 500.0
+offset_right = 537.0
+offset_bottom = 566.0
+texture_normal = SubResource("AtlasTexture_s1nmo")
+texture_pressed = SubResource("AtlasTexture_wn1iq")
+
+[node name="Label" type="Label" parent="Numpad/EnterButton"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 15.0
+offset_right = 59.0
+offset_bottom = 38.0
+text = "3"
+label_settings = SubResource("LabelSettings_a304f")
+horizontal_alignment = 1
+
+[node name="EnterButton3" type="TextureButton" parent="Numpad"]
+offset_left = 468.0
+offset_top = 429.0
+offset_right = 537.0
+offset_bottom = 495.0
+texture_normal = SubResource("AtlasTexture_s1nmo")
+texture_pressed = SubResource("AtlasTexture_wn1iq")
+
+[node name="Label" type="Label" parent="Numpad/EnterButton3"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 15.0
+offset_right = 59.0
+offset_bottom = 38.0
+text = "1"
+label_settings = SubResource("LabelSettings_a304f")
+horizontal_alignment = 1
+
+[node name="EnterButton4" type="TextureButton" parent="Numpad"]
+offset_left = 542.0
+offset_top = 429.0
+offset_right = 611.0
+offset_bottom = 495.0
+texture_normal = SubResource("AtlasTexture_s1nmo")
+texture_pressed = SubResource("AtlasTexture_wn1iq")
+
+[node name="Label" type="Label" parent="Numpad/EnterButton4"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 15.0
+offset_right = 59.0
+offset_bottom = 38.0
+text = "2"
+label_settings = SubResource("LabelSettings_a304f")
+horizontal_alignment = 1
+
+[node name="EnterButton2" type="TextureButton" parent="Numpad"]
+offset_left = 542.0
+offset_top = 500.0
+offset_right = 611.0
+offset_bottom = 566.0
+texture_normal = SubResource("AtlasTexture_s1nmo")
+texture_pressed = SubResource("AtlasTexture_wn1iq")
+
+[node name="Label" type="Label" parent="Numpad/EnterButton2"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 15.0
+offset_right = 59.0
+offset_bottom = 38.0
+text = "ENTER"
+label_settings = SubResource("LabelSettings_a304f")
+horizontal_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="Numpad"]
+offset_left = 466.0
+offset_top = 571.0
+offset_right = 616.0
+offset_bottom = 611.0
+
+[connection signal="timeout" from="FaultManager/FaultTimer" to="FaultManager" method="_on_trigger"]
