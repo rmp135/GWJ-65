@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://bi4spfdfn8pqe"]
+
+[ext_resource type="Texture2D" uid="uid://dh3mlfs6d0uyb" path="res://sprites/spritesheet.png" id="1_ewg0q"]
+[ext_resource type="Script" path="res://scenes/led.gd" id="1_ypskl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i10yb"]
+atlas = ExtResource("1_ewg0q")
+region = Rect2(3, 150, 30, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wfsko"]
+atlas = ExtResource("1_ewg0q")
+region = Rect2(36, 150, 30, 30)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2tx2c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i10yb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wfsko")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[node name="LED" type="Node2D"]
+script = ExtResource("1_ypskl")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_2tx2c")
+frame_progress = 0.504848

@@ -1,0 +1,92 @@
+[gd_scene load_steps=11 format=3 uid="uid://c3p3nco4j15tj"]
+
+[ext_resource type="Script" path="res://scenes/button_led.gd" id="1_kcc8r"]
+[ext_resource type="FontFile" uid="uid://enfp4afuixsa" path="res://sprites/m5x7.ttf" id="2_156qn"]
+[ext_resource type="Texture2D" uid="uid://dh3mlfs6d0uyb" path="res://sprites/spritesheet.png" id="4_v3uum"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gtki7"]
+atlas = ExtResource("4_v3uum")
+region = Rect2(69, 150, 45, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xnegs"]
+atlas = ExtResource("4_v3uum")
+region = Rect2(117, 150, 45, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ymmbe"]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gtki7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xnegs")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a7nln"]
+atlas = ExtResource("4_v3uum")
+region = Rect2(69, 201, 45, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d7x50"]
+atlas = ExtResource("4_v3uum")
+region = Rect2(117, 201, 45, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5j8mj"]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a7nln")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d7x50")
+}],
+"loop": false,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_poq8j"]
+resource_local_to_scene = true
+font = ExtResource("2_156qn")
+font_color = Color(0, 0, 0, 1)
+outline_size = 1
+outline_color = Color(0.533333, 0.533333, 0.533333, 1)
+
+[node name="ButtonLED" type="Node2D"]
+script = ExtResource("1_kcc8r")
+
+[node name="SpriteRed" type="AnimatedSprite2D" parent="."]
+visible = false
+sprite_frames = SubResource("SpriteFrames_ymmbe")
+centered = false
+
+[node name="SpriteBlue" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_5j8mj")
+centered = false
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="TextureButton2" type="TextureButton" parent="."]
+offset_right = 45.0
+offset_bottom = 48.0
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 7.0
+offset_top = 3.0
+offset_right = 39.0
+offset_bottom = 35.0
+text = "WAW"
+label_settings = SubResource("LabelSettings_poq8j")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="button_down" from="TextureButton2" to="." method="_on_texture_button_2_button_down"]
+[connection signal="button_up" from="TextureButton2" to="." method="_on_texture_button_2_button_up"]
+[connection signal="pressed" from="TextureButton2" to="." method="_on_texture_button_pressed"]
