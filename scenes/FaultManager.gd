@@ -3,6 +3,7 @@ extends Node
 var faults: Array[Fault] = []
 @onready var fault_timer: Timer = $FaultTimer
 @export var manual : Manual
+@onready var progress_bar: ProgressBar = $"../ProgressBar"
 
 func _ready() -> void:
 	var faultables = get_tree().get_nodes_in_group("faultable")
@@ -33,10 +34,13 @@ func _on_action(action: String) -> void:
 
 func _find_action_value() -> String:
 	var actionables = get_tree().get_nodes_in_group("actionable")
-	var a = actionables.pick_random()
-	if a.has_method("get_action_value"):
-		return a.get_action_value()
-	return ""
+	var a = actionables.pick_random() as Actionable
+	return a.get_action_value()
 
 func get_manual() -> String:
 	return "\n\n".join(faults.map(func (c): return c.get_manual()))
+
+
+func _on_fault_check_timer_timeout() -> void:
+	var faulting = faults.filter(func (a): return a.is_faulting).size() as float
+	progress_bar.value += faulting / 2

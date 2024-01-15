@@ -1,0 +1,102 @@
+[gd_scene load_steps=6 format=3 uid="uid://mbhtsefeaj2g"]
+
+[ext_resource type="Script" path="res://scenes/numpad.gd" id="1_fcu7m"]
+[ext_resource type="PackedScene" uid="uid://114trb5kklu0" path="res://scenes/numpad_number.tscn" id="2_oaqjr"]
+[ext_resource type="FontFile" uid="uid://enfp4afuixsa" path="res://sprites/m5x7.ttf" id="2_s0k1r"]
+[ext_resource type="Script" path="res://scenes/NumpadActionable.gd" id="5_4iim5"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_73kfd"]
+font = ExtResource("2_s0k1r")
+font_size = 45
+font_color = Color(0.305882, 0.305882, 0.305882, 1)
+
+[node name="Numpad" type="Node2D"]
+script = ExtResource("1_fcu7m")
+
+[node name="1" parent="." instance=ExtResource("2_oaqjr")]
+text = "1"
+
+[node name="2" parent="." instance=ExtResource("2_oaqjr")]
+offset_left = 71.0
+offset_right = 140.0
+text = "2"
+
+[node name="3" parent="." instance=ExtResource("2_oaqjr")]
+offset_left = 140.0
+offset_right = 209.0
+text = "3"
+
+[node name="4" parent="." instance=ExtResource("2_oaqjr")]
+offset_top = 66.0
+offset_bottom = 132.0
+text = "4"
+
+[node name="5" parent="." instance=ExtResource("2_oaqjr")]
+offset_left = 71.0
+offset_top = 66.0
+offset_right = 140.0
+offset_bottom = 132.0
+text = "5"
+
+[node name="6" parent="." instance=ExtResource("2_oaqjr")]
+offset_left = 140.0
+offset_top = 66.0
+offset_right = 209.0
+offset_bottom = 132.0
+text = "6"
+
+[node name="7" parent="." instance=ExtResource("2_oaqjr")]
+offset_top = 132.0
+offset_bottom = 198.0
+text = "7"
+
+[node name="8" parent="." instance=ExtResource("2_oaqjr")]
+offset_left = 71.0
+offset_top = 132.0
+offset_right = 140.0
+offset_bottom = 198.0
+text = "8"
+
+[node name="9" parent="." instance=ExtResource("2_oaqjr")]
+offset_left = 140.0
+offset_top = 132.0
+offset_right = 209.0
+offset_bottom = 198.0
+text = "9"
+
+[node name="CLEAR" parent="." instance=ExtResource("2_oaqjr")]
+offset_top = 198.0
+offset_bottom = 264.0
+text = "CLEAR"
+
+[node name="0" parent="." instance=ExtResource("2_oaqjr")]
+offset_left = 71.0
+offset_top = 198.0
+offset_right = 140.0
+offset_bottom = 264.0
+text = "0"
+
+[node name="ENTER" parent="." instance=ExtResource("2_oaqjr")]
+offset_left = 140.0
+offset_top = 198.0
+offset_right = 209.0
+offset_bottom = 264.0
+text = "ENTER"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = 4.0
+offset_top = 276.0
+offset_right = 219.0
+offset_bottom = 316.0
+
+[node name="Output" type="Label" parent="."]
+offset_left = 9.0
+offset_top = 278.0
+offset_right = 217.0
+offset_bottom = 314.0
+text = "332123"
+label_settings = SubResource("LabelSettings_73kfd")
+horizontal_alignment = 1
+
+[node name="Actionable" type="Node" parent="."]
+script = ExtResource("5_4iim5")

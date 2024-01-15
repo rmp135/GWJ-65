@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://d4kvb2gxy0lg8"]
+[gd_scene load_steps=9 format=3 uid="uid://d4kvb2gxy0lg8"]
 
 [ext_resource type="Texture2D" uid="uid://dh3mlfs6d0uyb" path="res://sprites/spritesheet.png" id="1_2oaot"]
 [ext_resource type="PackedScene" uid="uid://c3p3nco4j15tj" path="res://scenes/button_led.tscn" id="1_snc5b"]
@@ -6,24 +6,11 @@
 [ext_resource type="PackedScene" uid="uid://dfdc8m4o3u2j4" path="res://scenes/manual.tscn" id="3_dsrae"]
 [ext_resource type="PackedScene" uid="uid://dbqnwg310e52t" path="res://scenes/gauge.tscn" id="4_n6vnv"]
 [ext_resource type="PackedScene" uid="uid://cjnr1s5yd3jrj" path="res://scenes/dial.tscn" id="6_gwqmf"]
-[ext_resource type="FontFile" uid="uid://enfp4afuixsa" path="res://sprites/m5x7.ttf" id="6_x2cfr"]
+[ext_resource type="PackedScene" uid="uid://mbhtsefeaj2g" path="res://scenes/numpad.tscn" id="7_swmsy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dluik"]
 atlas = ExtResource("1_2oaot")
 region = Rect2(0, 0, 240, 147)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_s1nmo"]
-atlas = ExtResource("1_2oaot")
-region = Rect2(168, 150, 69, 66)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wn1iq"]
-atlas = ExtResource("1_2oaot")
-region = Rect2(240, 150, 69, 66)
-
-[sub_resource type="LabelSettings" id="LabelSettings_a304f"]
-font = ExtResource("6_x2cfr")
-font_size = 22
-font_color = Color(0.270588, 0.270588, 0.270588, 1)
 
 [node name="Root" type="Node2D"]
 
@@ -68,14 +55,29 @@ position = Vector2(86, 147)
 [node name="ButtonLED9" parent="Node2D" instance=ExtResource("1_snc5b")]
 position = Vector2(159, 146)
 
+[node name="ButtonLED10" parent="Node2D" instance=ExtResource("1_snc5b")]
+position = Vector2(233, 0)
+
+[node name="ButtonLED11" parent="Node2D" instance=ExtResource("1_snc5b")]
+position = Vector2(233, 73)
+
+[node name="ButtonLED12" parent="Node2D" instance=ExtResource("1_snc5b")]
+position = Vector2(233, 146)
+
 [node name="Manual" parent="." instance=ExtResource("3_dsrae")]
 position = Vector2(800, 0)
 
 [node name="Gauge" parent="." instance=ExtResource("4_n6vnv")]
-position = Vector2(81, 79)
+position = Vector2(81, 129)
+
+[node name="Gauge3" parent="." instance=ExtResource("4_n6vnv")]
+position = Vector2(401, 129)
+
+[node name="Gauge4" parent="." instance=ExtResource("4_n6vnv")]
+position = Vector2(556, 129)
 
 [node name="Gauge2" parent="." instance=ExtResource("4_n6vnv")]
-position = Vector2(245, 79)
+position = Vector2(245, 129)
 
 [node name="FaultManager" type="Node" parent="." node_paths=PackedStringArray("manual")]
 script = ExtResource("1_wbqnj")
@@ -85,90 +87,23 @@ manual = NodePath("../Manual")
 wait_time = 5.0
 autostart = true
 
+[node name="FaultCheckTimer" type="Timer" parent="FaultManager"]
+autostart = true
+
 [node name="Dial" parent="." instance=ExtResource("6_gwqmf")]
 position = Vector2(34, 577)
 
 [node name="Dial2" parent="." instance=ExtResource("6_gwqmf")]
 position = Vector2(185, 578)
 
-[node name="Numpad" type="Node2D" parent="."]
+[node name="Numpad" parent="." instance=ExtResource("7_swmsy")]
+position = Vector2(404, 356)
 
-[node name="EnterButton" type="TextureButton" parent="Numpad"]
-offset_left = 468.0
-offset_top = 500.0
-offset_right = 537.0
-offset_bottom = 566.0
-texture_normal = SubResource("AtlasTexture_s1nmo")
-texture_pressed = SubResource("AtlasTexture_wn1iq")
-
-[node name="Label" type="Label" parent="Numpad/EnterButton"]
-layout_mode = 0
-offset_left = 14.0
-offset_top = 15.0
-offset_right = 59.0
-offset_bottom = 38.0
-text = "3"
-label_settings = SubResource("LabelSettings_a304f")
-horizontal_alignment = 1
-
-[node name="EnterButton3" type="TextureButton" parent="Numpad"]
-offset_left = 468.0
-offset_top = 429.0
-offset_right = 537.0
-offset_bottom = 495.0
-texture_normal = SubResource("AtlasTexture_s1nmo")
-texture_pressed = SubResource("AtlasTexture_wn1iq")
-
-[node name="Label" type="Label" parent="Numpad/EnterButton3"]
-layout_mode = 0
-offset_left = 14.0
-offset_top = 15.0
-offset_right = 59.0
-offset_bottom = 38.0
-text = "1"
-label_settings = SubResource("LabelSettings_a304f")
-horizontal_alignment = 1
-
-[node name="EnterButton4" type="TextureButton" parent="Numpad"]
-offset_left = 542.0
-offset_top = 429.0
-offset_right = 611.0
-offset_bottom = 495.0
-texture_normal = SubResource("AtlasTexture_s1nmo")
-texture_pressed = SubResource("AtlasTexture_wn1iq")
-
-[node name="Label" type="Label" parent="Numpad/EnterButton4"]
-layout_mode = 0
-offset_left = 14.0
-offset_top = 15.0
-offset_right = 59.0
-offset_bottom = 38.0
-text = "2"
-label_settings = SubResource("LabelSettings_a304f")
-horizontal_alignment = 1
-
-[node name="EnterButton2" type="TextureButton" parent="Numpad"]
-offset_left = 542.0
-offset_top = 500.0
-offset_right = 611.0
-offset_bottom = 566.0
-texture_normal = SubResource("AtlasTexture_s1nmo")
-texture_pressed = SubResource("AtlasTexture_wn1iq")
-
-[node name="Label" type="Label" parent="Numpad/EnterButton2"]
-layout_mode = 0
-offset_left = 14.0
-offset_top = 15.0
-offset_right = 59.0
-offset_bottom = 38.0
-text = "ENTER"
-label_settings = SubResource("LabelSettings_a304f")
-horizontal_alignment = 1
-
-[node name="ColorRect" type="ColorRect" parent="Numpad"]
-offset_left = 466.0
-offset_top = 571.0
-offset_right = 616.0
-offset_bottom = 611.0
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = 23.0
+offset_top = 16.0
+offset_right = 748.0
+offset_bottom = 43.0
 
 [connection signal="timeout" from="FaultManager/FaultTimer" to="FaultManager" method="_on_trigger"]
+[connection signal="timeout" from="FaultManager/FaultCheckTimer" to="FaultManager" method="_on_fault_check_timer_timeout"]

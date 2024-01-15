@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://c3p3nco4j15tj"]
+[gd_scene load_steps=11 format=3 uid="uid://c3p3nco4j15tj"]
 
 [ext_resource type="Script" path="res://scenes/button_led.gd" id="1_kcc8r"]
 [ext_resource type="FontFile" uid="uid://enfp4afuixsa" path="res://sprites/m5x7.ttf" id="2_156qn"]
 [ext_resource type="Script" path="res://scenes/ButtonLEDIndicator.gd" id="4_58lk6"]
 [ext_resource type="Texture2D" uid="uid://dh3mlfs6d0uyb" path="res://sprites/spritesheet.png" id="4_v3uum"]
+[ext_resource type="Script" path="res://scenes/ButtonLEDActionable.gd" id="5_qapvl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xicft"]
 atlas = ExtResource("4_v3uum")
@@ -29,7 +30,7 @@ font_color = Color(0, 0, 0, 1)
 outline_size = 1
 outline_color = Color(0.533333, 0.533333, 0.533333, 1)
 
-[node name="ButtonLED" type="Node2D" groups=["actionable"]]
+[node name="ButtonLED" type="Node2D"]
 script = ExtResource("1_kcc8r")
 
 [node name="Timer" type="Timer" parent="."]
@@ -63,6 +64,9 @@ vertical_alignment = 1
 
 [node name="ButtonLEDIndicator" type="Node" parent="."]
 script = ExtResource("4_58lk6")
+
+[node name="Actionable" type="Node" parent="."]
+script = ExtResource("5_qapvl")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="button_down" from="TextureButton" to="." method="_on_texture_button_2_button_down"]

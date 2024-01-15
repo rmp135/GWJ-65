@@ -16,7 +16,7 @@ func resolve() -> void:
 		faulting_node.resolve()
 
 func is_resolved() -> bool:
-	return indicators.reduce(func (b, a): return a && b.get_current_value() == b.get_random_value())
+	return indicators.map(func (b): return b.get_current_value() == b.get_random_value()).reduce(func (b, a): return a && b)
 
 func get_manual() -> String:
 	var lines: Array[String] = []
