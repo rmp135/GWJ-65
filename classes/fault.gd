@@ -1,8 +1,8 @@
 class_name Fault
 
-var faulting_node : Node
+var faulting_node : Faultable
 var action_value : String
-var is_faulting: bool = false
+var is_faulting := false
 var indicators: Array[Indicator]
 
 func trigger() -> void:
@@ -20,7 +20,7 @@ func is_resolved() -> bool:
 
 func get_manual() -> String:
 	var lines: Array[String] = []
-	lines.append(faulting_node.instrument_name)
+	lines.append(faulting_node.get_label())
 	for i in indicators:
 		lines.append(i.get_manual_text())
 	lines.append("Press key: {0}".format([action_value]))

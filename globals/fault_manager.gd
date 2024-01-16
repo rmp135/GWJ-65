@@ -5,10 +5,16 @@ var faults: Array[Fault] = []
 @export var manual : Manual
 @onready var progress_bar: ProgressBar = $"../ProgressBar"
 
+func _on_game_started():
+	fault_timer.start()
+	
 func _ready() -> void:
-	var faultables = get_tree().get_nodes_in_group("faultable")
+	GameManager.game_started.connect(_on_game_started)
+	
+	var faultables = get_tree().get_nodes_in_group("faultable") as Array[Faultable]
 	var indicators = get_tree().get_nodes_in_group("indicator") as Array[Indicator]
-	var actions = get_tree().get_nodes_in_group("actionable")
+	var actions = get_tree().get_nodes_in_group("actionable") as Array[Actionable]
+	
 	for actionable in actions:
 		actionable.connect("action", _on_action)
 

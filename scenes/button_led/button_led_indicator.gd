@@ -2,10 +2,10 @@ extends Indicator
 
 @onready var button: ButtonLED = $".."
 
-var r_val: String = "on"
+var faulting_value := "on"
 
 func _ready() -> void:
-	r_val = ["on", "off"].pick_random()
+	faulting_value = ["on", "off"].pick_random()
 	super._ready()
 
 func get_current_value() -> String:
@@ -13,8 +13,8 @@ func get_current_value() -> String:
 
 # gets a possible value for faults
 func get_random_value() -> String:
-	return r_val
+	return faulting_value
 
 # gets the explanation text required in the manual
 func get_manual_text() -> String:
-	return "Button {0} must be {1}".format([button.text, r_val])
+	return "Button {0} must be {1}".format([button.text, faulting_value])

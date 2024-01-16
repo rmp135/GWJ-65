@@ -1,14 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://dbqnwg310e52t"]
+[gd_scene load_steps=6 format=3 uid="uid://dbqnwg310e52t"]
 
 [ext_resource type="Texture2D" uid="uid://dh3mlfs6d0uyb" path="res://sprites/spritesheet.png" id="1_4xa8j"]
 [ext_resource type="Script" path="res://scenes/gauge/gauge.gd" id="1_rhabp"]
 [ext_resource type="PackedScene" uid="uid://bi4spfdfn8pqe" path="res://scenes/led/led.tscn" id="3_w0pqo"]
+[ext_resource type="Script" path="res://scenes/gauge/gauge_faultable.gd" id="4_4ka13"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_81erd"]
 atlas = ExtResource("1_4xa8j")
 region = Rect2(243, 3, 135, 135)
 
-[node name="Gauge" type="Node2D" groups=["faultable"]]
+[node name="Gauge" type="Node2D"]
 position = Vector2(69, 68)
 script = ExtResource("1_rhabp")
 value = 68
@@ -39,5 +40,8 @@ offset_right = 68.0
 offset_bottom = -44.0
 text = "F22"
 horizontal_alignment = 1
+
+[node name="GaugeFaultable" type="Node2D" parent="."]
+script = ExtResource("4_4ka13")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

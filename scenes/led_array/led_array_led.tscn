@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://d3n8t3dgg7wh7"]
+
+[ext_resource type="Script" path="res://scenes/led_array/led_array_led.gd" id="1_3oyqb"]
+[ext_resource type="PackedScene" uid="uid://bi4spfdfn8pqe" path="res://scenes/led/led.tscn" id="2_gi7jb"]
+[ext_resource type="Script" path="res://scenes/led_array/led_array_faultable.gd" id="3_hfrbv"]
+
+[node name="LEDArrayLED" type="Node2D"]
+script = ExtResource("1_3oyqb")
+
+[node name="LED" parent="." instance=ExtResource("2_gi7jb")]
+
+[node name="LEDArrayFaultable" type="Node" parent="."]
+script = ExtResource("3_hfrbv")

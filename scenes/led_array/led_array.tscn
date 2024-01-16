@@ -1,86 +1,84 @@
-[gd_scene load_steps=2 format=3 uid="uid://bptqmify5gwxy"]
+[gd_scene load_steps=3 format=3 uid="uid://bptqmify5gwxy"]
 
-[ext_resource type="PackedScene" uid="uid://bi4spfdfn8pqe" path="res://scenes/led/led.tscn" id="1_k5i00"]
+[ext_resource type="Script" path="res://scenes/led_array/led_array.gd" id="1_bpcad"]
+[ext_resource type="PackedScene" uid="uid://d3n8t3dgg7wh7" path="res://scenes/led_array/led_array_led.tscn" id="3_ex3ub"]
 
 [node name="LEDArray" type="Node2D"]
 position = Vector2(1, -1)
+script = ExtResource("1_bpcad")
 
-[node name="LED" parent="." instance=ExtResource("1_k5i00")]
-position = Vector2(40, 73)
+[node name="LEDs" type="Node2D" parent="."]
 
-[node name="LED2" parent="." instance=ExtResource("1_k5i00")]
-position = Vector2(103, 73)
+[node name="LEDArrayLED" parent="LEDs" instance=ExtResource("3_ex3ub")]
+position = Vector2(33, 43)
 
-[node name="LED3" parent="." instance=ExtResource("1_k5i00")]
-position = Vector2(170, 73)
+[node name="LEDArrayLED2" parent="LEDs" instance=ExtResource("3_ex3ub")]
+position = Vector2(99, 43)
 
-[node name="LED4" parent="." instance=ExtResource("1_k5i00")]
-position = Vector2(40, 132)
+[node name="LEDArrayLED3" parent="LEDs" instance=ExtResource("3_ex3ub")]
+position = Vector2(164, 43)
 
-[node name="LED5" parent="." instance=ExtResource("1_k5i00")]
-position = Vector2(103, 132)
-flashing = true
+[node name="LEDArrayLED4" parent="LEDs" instance=ExtResource("3_ex3ub")]
+position = Vector2(33, 99)
 
-[node name="LED6" parent="." instance=ExtResource("1_k5i00")]
-position = Vector2(170, 132)
+[node name="LEDArrayLED5" parent="LEDs" instance=ExtResource("3_ex3ub")]
+position = Vector2(99, 99)
 
-[node name="LED7" parent="." instance=ExtResource("1_k5i00")]
-position = Vector2(40, 193)
+[node name="LEDArrayLED6" parent="LEDs" instance=ExtResource("3_ex3ub")]
+position = Vector2(164, 99)
 
-[node name="LED8" parent="." instance=ExtResource("1_k5i00")]
-position = Vector2(103, 193)
+[node name="LEDArrayLED7" parent="LEDs" instance=ExtResource("3_ex3ub")]
+position = Vector2(33, 160)
 
-[node name="LED9" parent="." instance=ExtResource("1_k5i00")]
-position = Vector2(170, 193)
-flashing = true
+[node name="LEDArrayLED8" parent="LEDs" instance=ExtResource("3_ex3ub")]
+position = Vector2(99, 160)
 
-[node name="Label" type="Label" parent="."]
-offset_left = 25.0
-offset_top = 30.0
-offset_right = 58.0
-offset_bottom = 53.0
+[node name="LEDArrayLED9" parent="LEDs" instance=ExtResource("3_ex3ub")]
+position = Vector2(164, 160)
+
+[node name="Labels" type="Node2D" parent="."]
+
+[node name="TopLeft" type="Label" parent="Labels"]
+offset_left = 18.0
+offset_right = 51.0
+offset_bottom = 23.0
 text = "A"
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="Label2" type="Label" parent="."]
-offset_left = 88.0
-offset_top = 30.0
-offset_right = 121.0
-offset_bottom = 53.0
+[node name="TopMiddle" type="Label" parent="Labels"]
+offset_left = 81.0
+offset_right = 114.0
+offset_bottom = 23.0
 text = "A"
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="Label3" type="Label" parent="."]
-offset_left = 155.0
-offset_top = 30.0
-offset_right = 188.0
-offset_bottom = 53.0
+[node name="TopRight" type="Label" parent="Labels"]
+offset_left = 148.0
+offset_right = 181.0
+offset_bottom = 23.0
 text = "A"
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="Label4" type="Label" parent="."]
-offset_left = 7.0
-offset_top = 59.0
-offset_right = 40.0
-offset_bottom = 82.0
+[node name="LeftTop" type="Label" parent="Labels"]
+offset_top = 29.0
+offset_right = 33.0
+offset_bottom = 52.0
 text = "A"
 metadata/_edit_use_anchors_ = true
 
-[node name="Label5" type="Label" parent="."]
-offset_left = 7.0
-offset_top = 118.0
-offset_right = 40.0
-offset_bottom = 141.0
+[node name="LeftMiddle" type="Label" parent="Labels"]
+offset_top = 88.0
+offset_right = 33.0
+offset_bottom = 111.0
 text = "A"
 metadata/_edit_use_anchors_ = true
 
-[node name="Label6" type="Label" parent="."]
-offset_left = 7.0
-offset_top = 179.0
-offset_right = 40.0
-offset_bottom = 202.0
+[node name="LeftBottom" type="Label" parent="Labels"]
+offset_top = 149.0
+offset_right = 33.0
+offset_bottom = 172.0
 text = "A"
 metadata/_edit_use_anchors_ = true
