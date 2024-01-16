@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://114trb5kklu0"]
 
 [ext_resource type="Texture2D" uid="uid://dh3mlfs6d0uyb" path="res://sprites/spritesheet.png" id="1_3insr"]
-[ext_resource type="Script" path="res://scenes/numpad_number.gd" id="2_sq4dd"]
+[ext_resource type="Script" path="res://scenes/numpad/numpad_number.gd" id="2_sq4dd"]
 [ext_resource type="FontFile" uid="uid://enfp4afuixsa" path="res://sprites/m5x7.ttf" id="3_5s1j3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s1nmo"]

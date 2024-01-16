@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://mbhtsefeaj2g"]
 
-[ext_resource type="Script" path="res://scenes/numpad.gd" id="1_fcu7m"]
-[ext_resource type="PackedScene" uid="uid://114trb5kklu0" path="res://scenes/numpad_number.tscn" id="2_oaqjr"]
+[ext_resource type="Script" path="res://scenes/numpad/numpad.gd" id="1_fcu7m"]
+[ext_resource type="PackedScene" uid="uid://114trb5kklu0" path="res://scenes/numpad/numpad_number.tscn" id="2_oaqjr"]
 [ext_resource type="FontFile" uid="uid://enfp4afuixsa" path="res://sprites/m5x7.ttf" id="2_s0k1r"]
-[ext_resource type="Script" path="res://scenes/NumpadActionable.gd" id="5_4iim5"]
+[ext_resource type="Script" path="res://scenes/numpad/numpad_actionable.gd" id="5_4iim5"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_73kfd"]
 font = ExtResource("2_s0k1r")

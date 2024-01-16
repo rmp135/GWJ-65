@@ -1,10 +1,10 @@
 [gd_scene load_steps=11 format=3 uid="uid://c3p3nco4j15tj"]
 
-[ext_resource type="Script" path="res://scenes/button_led.gd" id="1_kcc8r"]
+[ext_resource type="Script" path="res://scenes/button_led/button_led.gd" id="1_kcc8r"]
 [ext_resource type="FontFile" uid="uid://enfp4afuixsa" path="res://sprites/m5x7.ttf" id="2_156qn"]
-[ext_resource type="Script" path="res://scenes/ButtonLEDIndicator.gd" id="4_58lk6"]
+[ext_resource type="Script" path="res://scenes/button_led/button_led_indicator.gd" id="4_58lk6"]
 [ext_resource type="Texture2D" uid="uid://dh3mlfs6d0uyb" path="res://sprites/spritesheet.png" id="4_v3uum"]
-[ext_resource type="Script" path="res://scenes/ButtonLEDActionable.gd" id="5_qapvl"]
+[ext_resource type="Script" path="res://scenes/button_led/button_led_actionable.gd" id="5_qapvl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xicft"]
 atlas = ExtResource("4_v3uum")

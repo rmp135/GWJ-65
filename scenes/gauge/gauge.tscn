@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://dbqnwg310e52t"]
 
 [ext_resource type="Texture2D" uid="uid://dh3mlfs6d0uyb" path="res://sprites/spritesheet.png" id="1_4xa8j"]
-[ext_resource type="Script" path="res://scenes/gauge.gd" id="1_rhabp"]
-[ext_resource type="PackedScene" uid="uid://bi4spfdfn8pqe" path="res://scenes/led.tscn" id="3_w0pqo"]
+[ext_resource type="Script" path="res://scenes/gauge/gauge.gd" id="1_rhabp"]
+[ext_resource type="PackedScene" uid="uid://bi4spfdfn8pqe" path="res://scenes/led/led.tscn" id="3_w0pqo"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_81erd"]
 atlas = ExtResource("1_4xa8j")
