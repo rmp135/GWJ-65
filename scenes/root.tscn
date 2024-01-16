@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://d4kvb2gxy0lg8"]
 
 [ext_resource type="Texture2D" uid="uid://dh3mlfs6d0uyb" path="res://sprites/spritesheet.png" id="1_2oaot"]
-[ext_resource type="PackedScene" uid="uid://c3p3nco4j15tj" path="res://scenes/button_led.tscn" id="1_snc5b"]
 [ext_resource type="Script" path="res://scenes/FaultManager.gd" id="1_wbqnj"]
+[ext_resource type="PackedScene" path="res://buttongrid.tscn" id="2_1gigs"]
 [ext_resource type="PackedScene" uid="uid://dfdc8m4o3u2j4" path="res://scenes/manual.tscn" id="3_dsrae"]
 [ext_resource type="PackedScene" uid="uid://dbqnwg310e52t" path="res://scenes/gauge.tscn" id="4_n6vnv"]
 [ext_resource type="PackedScene" uid="uid://cjnr1s5yd3jrj" path="res://scenes/dial.tscn" id="6_gwqmf"]
@@ -25,44 +25,8 @@ patch_margin_right = 12
 patch_margin_bottom = 15
 axis_stretch_horizontal = 1
 
-[node name="Node2D" type="Node2D" parent="."]
-position = Vector2(30, 356)
-
-[node name="ButtonLED" parent="Node2D" instance=ExtResource("1_snc5b")]
-position = Vector2(13, 0)
-
-[node name="ButtonLED2" parent="Node2D" instance=ExtResource("1_snc5b")]
-position = Vector2(86, 1)
-
-[node name="ButtonLED3" parent="Node2D" instance=ExtResource("1_snc5b")]
-position = Vector2(159, 0)
-
-[node name="ButtonLED4" parent="Node2D" instance=ExtResource("1_snc5b")]
-position = Vector2(13, 73)
-
-[node name="ButtonLED5" parent="Node2D" instance=ExtResource("1_snc5b")]
-position = Vector2(86, 74)
-
-[node name="ButtonLED6" parent="Node2D" instance=ExtResource("1_snc5b")]
-position = Vector2(159, 73)
-
-[node name="ButtonLED7" parent="Node2D" instance=ExtResource("1_snc5b")]
-position = Vector2(13, 146)
-
-[node name="ButtonLED8" parent="Node2D" instance=ExtResource("1_snc5b")]
-position = Vector2(86, 147)
-
-[node name="ButtonLED9" parent="Node2D" instance=ExtResource("1_snc5b")]
-position = Vector2(159, 146)
-
-[node name="ButtonLED10" parent="Node2D" instance=ExtResource("1_snc5b")]
-position = Vector2(233, 0)
-
-[node name="ButtonLED11" parent="Node2D" instance=ExtResource("1_snc5b")]
-position = Vector2(233, 73)
-
-[node name="ButtonLED12" parent="Node2D" instance=ExtResource("1_snc5b")]
-position = Vector2(233, 146)
+[node name="ButtonGrid" parent="." instance=ExtResource("2_1gigs")]
+position = Vector2(47, 357)
 
 [node name="Manual" parent="." instance=ExtResource("3_dsrae")]
 position = Vector2(800, 0)
@@ -79,17 +43,6 @@ position = Vector2(556, 129)
 [node name="Gauge2" parent="." instance=ExtResource("4_n6vnv")]
 position = Vector2(245, 129)
 
-[node name="FaultManager" type="Node" parent="." node_paths=PackedStringArray("manual")]
-script = ExtResource("1_wbqnj")
-manual = NodePath("../Manual")
-
-[node name="FaultTimer" type="Timer" parent="FaultManager"]
-wait_time = 5.0
-autostart = true
-
-[node name="FaultCheckTimer" type="Timer" parent="FaultManager"]
-autostart = true
-
 [node name="Dial" parent="." instance=ExtResource("6_gwqmf")]
 position = Vector2(34, 577)
 
@@ -104,6 +57,17 @@ offset_left = 23.0
 offset_top = 16.0
 offset_right = 748.0
 offset_bottom = 43.0
+
+[node name="FaultManager" type="Node" parent="." node_paths=PackedStringArray("manual")]
+script = ExtResource("1_wbqnj")
+manual = NodePath("../Manual")
+
+[node name="FaultTimer" type="Timer" parent="FaultManager"]
+wait_time = 5.0
+autostart = true
+
+[node name="FaultCheckTimer" type="Timer" parent="FaultManager"]
+autostart = true
 
 [connection signal="timeout" from="FaultManager/FaultTimer" to="FaultManager" method="_on_trigger"]
 [connection signal="timeout" from="FaultManager/FaultCheckTimer" to="FaultManager" method="_on_fault_check_timer_timeout"]

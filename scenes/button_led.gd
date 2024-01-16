@@ -18,10 +18,12 @@ var vowels = ['A','E','I','O','U']
 func _process(delta):
 	blue_led.visible = !enabled
 	red_led.visible = enabled
-			
-func _ready():
-	text = consanonts.pick_random() + vowels.pick_random() + consanonts.pick_random()
+
+func set_name_string(name: String):
+	text = NameGenerator.get_name_string()
 	label_2.text = text
+
+func _ready():
 	enabled = randi_range(0, 1) == 0
 	timer.wait_time = randf_range(5, 30)
 	timer.start()

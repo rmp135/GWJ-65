@@ -18,7 +18,7 @@ font = ExtResource("3_t2gv4")
 font_size = 24
 font_color = Color(0.219608, 0.219608, 0.219608, 1)
 
-[node name="Dial" type="Node2D" groups=["indicator"]]
+[node name="Dial" type="Node2D"]
 script = ExtResource("1_mvgfb")
 
 [node name="TextureButton" type="TextureButton" parent="."]
@@ -78,9 +78,6 @@ offset_bottom = 75.0
 text = "5"
 label_settings = SubResource("LabelSettings_toyge")
 
-[node name="Indicator" type="Node" parent="."]
-script = ExtResource("4_wytso")
-
 [node name="Label6" type="Label" parent="."]
 offset_left = 37.0
 offset_top = 90.0
@@ -88,5 +85,8 @@ offset_right = 131.0
 offset_bottom = 113.0
 text = "D123"
 horizontal_alignment = 1
+
+[node name="Indicator" type="Node" parent="."]
+script = ExtResource("4_wytso")
 
 [connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]

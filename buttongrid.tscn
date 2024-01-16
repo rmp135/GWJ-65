@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://bp7al0ayyrxdl"]
+
+[ext_resource type="PackedScene" uid="uid://c3p3nco4j15tj" path="res://scenes/button_led.tscn" id="1_1cssm"]
+[ext_resource type="Script" path="res://buttongrid.gd" id="1_qgfq0"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_qgfq0")
+
+[node name="ButtonLED" parent="." instance=ExtResource("1_1cssm")]
+
+[node name="ButtonLED2" parent="." instance=ExtResource("1_1cssm")]
+position = Vector2(73, 1)
+
+[node name="ButtonLED3" parent="." instance=ExtResource("1_1cssm")]
+position = Vector2(146, 0)
+
+[node name="ButtonLED4" parent="." instance=ExtResource("1_1cssm")]
+position = Vector2(0, 73)
+
+[node name="ButtonLED5" parent="." instance=ExtResource("1_1cssm")]
+position = Vector2(73, 74)
+
+[node name="ButtonLED6" parent="." instance=ExtResource("1_1cssm")]
+position = Vector2(146, 73)
+
+[node name="ButtonLED7" parent="." instance=ExtResource("1_1cssm")]
+position = Vector2(0, 146)
+
+[node name="ButtonLED8" parent="." instance=ExtResource("1_1cssm")]
+position = Vector2(73, 147)
+
+[node name="ButtonLED9" parent="." instance=ExtResource("1_1cssm")]
+position = Vector2(146, 146)

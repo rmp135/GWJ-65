@@ -9,6 +9,7 @@ var text: String = "D123"
 var index: int = 0
 
 func _ready() -> void:
+	text  = NameGenerator.get_name_string()
 	label_6.text = text
 
 var value: String:
