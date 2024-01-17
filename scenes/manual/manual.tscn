@@ -1,16 +1,63 @@
-[gd_scene load_steps=4 format=3 uid="uid://dfdc8m4o3u2j4"]
+[gd_scene load_steps=9 format=3 uid="uid://dfdc8m4o3u2j4"]
 
 [ext_resource type="Script" path="res://scenes/manual/manual.gd" id="1_ebhdm"]
 [ext_resource type="Texture2D" uid="uid://dh3mlfs6d0uyb" path="res://sprites/spritesheet.png" id="2_jqre2"]
+[ext_resource type="FontFile" uid="uid://enfp4afuixsa" path="res://sprites/m5x7.ttf" id="3_8vikr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_duq1n"]
+atlas = ExtResource("2_jqre2")
+region = Rect2(429, 9, 201, 249)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uo6n8"]
+atlas = ExtResource("2_jqre2")
+region = Rect2(639, 63, 123, 69)
+
+[sub_resource type="LabelSettings" id="LabelSettings_p0ulv"]
+font = ExtResource("3_8vikr")
+font_size = 36
+font_color = Color(0.239216, 0.239216, 0.239216, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ngoo3"]
 atlas = ExtResource("2_jqre2")
-region = Rect2(429, 9, 201, 249)
+region = Rect2(429, 270, 201, 249)
+
+[sub_resource type="LabelSettings" id="LabelSettings_7o0wj"]
+font_color = Color(0.0901961, 0.0901961, 0.0901961, 1)
 
 [node name="Manual" type="Node2D"]
 script = ExtResource("1_ebhdm")
 
-[node name="NinePatchRect" type="NinePatchRect" parent="."]
+[node name="CoverRect" type="NinePatchRect" parent="."]
+unique_name_in_owner = true
+offset_right = 475.0
+offset_bottom = 767.0
+texture = SubResource("AtlasTexture_duq1n")
+region_rect = Rect2(0, 0, 201, 249)
+patch_margin_left = 56
+patch_margin_top = 33
+patch_margin_right = 81
+patch_margin_bottom = 138
+
+[node name="Sprite2D" type="Sprite2D" parent="CoverRect"]
+position = Vector2(246, 194)
+scale = Vector2(1.9058, 1.9058)
+texture = SubResource("AtlasTexture_uo6n8")
+
+[node name="Label" type="Label" parent="CoverRect"]
+layout_mode = 0
+offset_left = 134.0
+offset_top = 147.0
+offset_right = 349.0
+offset_bottom = 250.0
+text = "Alarm Manual
+Authorised Use
+Only"
+label_settings = SubResource("LabelSettings_p0ulv")
+horizontal_alignment = 1
+
+[node name="InstructionsRect" type="NinePatchRect" parent="."]
+unique_name_in_owner = true
+visible = false
 offset_right = 475.0
 offset_bottom = 767.0
 texture = SubResource("AtlasTexture_ngoo3")
@@ -20,7 +67,8 @@ patch_margin_top = 33
 patch_margin_right = 81
 patch_margin_bottom = 81
 
-[node name="Text" type="Label" parent="NinePatchRect"]
+[node name="Instructions" type="Label" parent="InstructionsRect"]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = 16.0
 offset_top = 26.0
@@ -41,6 +89,7 @@ In extremely rare circumstances the system may require human input and will aler
 Alarms
 
 "
+label_settings = SubResource("LabelSettings_7o0wj")
 autowrap_mode = 2
 max_lines_visible = 25
 
@@ -52,6 +101,7 @@ offset_bottom = 723.0
 text = "Next"
 
 [node name="PreviousButton" type="Button" parent="."]
+unique_name_in_owner = true
 offset_left = 13.0
 offset_top = 690.0
 offset_right = 122.0

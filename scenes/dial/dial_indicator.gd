@@ -1,10 +1,10 @@
 extends Indicator
 
 @onready var dial: Dial = $".."
-var r_val: String = ""
+var faulting_value := ""
 
 func _ready() -> void:
-	r_val = str([1,2,3,4].pick_random())
+	faulting_value = str([1,2,3,4].pick_random())
 	super._ready()
 
 func get_current_value() -> String:
@@ -12,8 +12,8 @@ func get_current_value() -> String:
 
 # gets a possible value for faults
 func get_random_value() -> String:
-	return r_val
+	return faulting_value
 
 # gets the explanation text required in the manual
 func get_manual_text() -> String:
-	return "Dial {0} must be set to position {1}".format([dial.text, r_val])
+	return "Dial {0} must be set to position {1}".format([dial.text, faulting_value])

@@ -8,12 +8,9 @@ class_name ButtonLED
 @onready var offset: Node2D = $Offset
 @onready var actionable: Node = $Actionable
 
-@export var enabled: bool
+@export var enabled := false
 
 var text: String
-
-var consanonts = ['B','C','D','F']
-var vowels = ['A','E','I','O','U']
 
 func _process(delta):
 	blue_led.visible = !enabled

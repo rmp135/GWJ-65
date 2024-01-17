@@ -1,0 +1,120 @@
+[gd_scene load_steps=17 format=3 uid="uid://d4kvb2gxy0lg8"]
+
+[ext_resource type="Script" path="res://scenes/root/root.gd" id="1_lreeu"]
+[ext_resource type="Texture2D" uid="uid://dh3mlfs6d0uyb" path="res://sprites/spritesheet.png" id="2_bv130"]
+[ext_resource type="PackedScene" uid="uid://bp7al0ayyrxdl" path="res://scenes/buttongrid/buttongrid.tscn" id="3_3k35s"]
+[ext_resource type="PackedScene" uid="uid://dfdc8m4o3u2j4" path="res://scenes/manual/manual.tscn" id="4_7xx61"]
+[ext_resource type="PackedScene" uid="uid://dbqnwg310e52t" path="res://scenes/gauge/gauge.tscn" id="5_bykmd"]
+[ext_resource type="PackedScene" uid="uid://cjnr1s5yd3jrj" path="res://scenes/dial/dial.tscn" id="6_bksop"]
+[ext_resource type="PackedScene" uid="uid://mbhtsefeaj2g" path="res://scenes/numpad/numpad.tscn" id="7_0x0n1"]
+[ext_resource type="PackedScene" uid="uid://bptqmify5gwxy" path="res://scenes/led_array/led_array.tscn" id="8_4q01j"]
+[ext_resource type="Script" path="res://scenes/Button.gd" id="9_mdvg3"]
+[ext_resource type="PackedScene" uid="uid://dgrul6e33kwel" path="res://scenes/fault_manager/fault_manager.tscn" id="10_n36d1"]
+[ext_resource type="PackedScene" uid="uid://dsue7fs33ssif" path="res://scenes/pause_overlay/pause_overlay.tscn" id="11_xdrxu"]
+[ext_resource type="Script" path="res://scenes/heat_indicator/heat_indicator.gd" id="12_eyyx2"]
+[ext_resource type="Script" path="res://scenes/loading_led.gd" id="13_b4qgp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dluik"]
+atlas = ExtResource("2_bv130")
+region = Rect2(0, 0, 240, 147)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p14du"]
+atlas = ExtResource("2_bv130")
+region = Rect2(318, 177, 27, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_202od"]
+atlas = ExtResource("2_bv130")
+region = Rect2(315, 156, 33, 18)
+
+[node name="Root" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lreeu")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_right = 766.0
+offset_bottom = 765.0
+texture = SubResource("AtlasTexture_dluik")
+region_rect = Rect2(0, 0, 240, 147)
+patch_margin_left = 15
+patch_margin_top = 18
+patch_margin_right = 12
+patch_margin_bottom = 15
+axis_stretch_horizontal = 1
+
+[node name="ButtonGrid" parent="." instance=ExtResource("3_3k35s")]
+position = Vector2(47, 385)
+
+[node name="Manual" parent="." instance=ExtResource("4_7xx61")]
+position = Vector2(800, 0)
+
+[node name="Gauge" parent="." instance=ExtResource("5_bykmd")]
+position = Vector2(145, 211)
+
+[node name="Gauge3" parent="." instance=ExtResource("5_bykmd")]
+position = Vector2(465, 211)
+
+[node name="Gauge4" parent="." instance=ExtResource("5_bykmd")]
+position = Vector2(620, 211)
+
+[node name="Gauge2" parent="." instance=ExtResource("5_bykmd")]
+position = Vector2(309, 211)
+
+[node name="Dial" parent="." instance=ExtResource("6_bksop")]
+position = Vector2(81, 616)
+
+[node name="Dial2" parent="." instance=ExtResource("6_bksop")]
+position = Vector2(294, 616)
+
+[node name="Numpad" parent="." instance=ExtResource("7_0x0n1")]
+position = Vector2(497, 384)
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 23.0
+offset_top = 16.0
+offset_right = 748.0
+offset_bottom = 43.0
+
+[node name="LEDArray" parent="." instance=ExtResource("8_4q01j")]
+position = Vector2(294, 380)
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 52.0
+offset_right = 100.0
+offset_bottom = 82.0
+text = "Start"
+script = ExtResource("9_mdvg3")
+
+[node name="FaultManager" parent="." node_paths=PackedStringArray("manual") instance=ExtResource("10_n36d1")]
+manual = NodePath("../Manual")
+
+[node name="PauseOverlay" parent="." instance=ExtResource("11_xdrxu")]
+process_mode = 3
+visible = false
+layout_mode = 1
+
+[node name="HeatIndicator" type="Node2D" parent="."]
+position = Vector2(736, 351)
+script = ExtResource("12_eyyx2")
+
+[node name="LoadingLED" type="Node2D" parent="HeatIndicator"]
+unique_name_in_owner = true
+script = ExtResource("13_b4qgp")
+
+[node name="LoadingLEDOff" type="Sprite2D" parent="HeatIndicator/LoadingLED"]
+texture = SubResource("AtlasTexture_p14du")
+
+[node name="LoadingLEDOn" type="Sprite2D" parent="HeatIndicator/LoadingLED"]
+visible = false
+texture = SubResource("AtlasTexture_202od")
+
+[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]

@@ -7,7 +7,11 @@ func _ready() -> void:
 	var children : Array[Node] = get_children()
 	for c in children.filter(func(c): return c.has_signal("press")):
 		c.connect("press", _on__press)
-
+	
+	for i in 5:
+		var dupe = actionable.duplicate()
+		add_child(dupe)
+	
 func _on__press(value: String) -> void:
 	if value == 'CLEAR':
 		output.text = ""
