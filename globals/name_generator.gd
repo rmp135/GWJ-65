@@ -1,24 +1,17 @@
 extends Node
 
-const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 const numbers = '0123456789'
 
 var used_names: Array[String] = []
 
-func _get_first_letters() -> Array[String]:
-	return letters.split("").slice(0, 9)
-	
-func _get_mid_letters() -> Array[String]:
-	return letters.split("").slice(9, 18)
-	
-func _get_last_letters() -> Array[String]:
-	return letters.split("").slice(18, 26)
-
 func get_name_string() -> String:
-	var name: String
+	var new_name: String
 	while true:
-		name = "{0}{1}{2}".format([letters[randi()% len(letters)],letters[randi()% len(letters)],letters[randi()% len(letters)]])
-		if !used_names.has(name):
+		var a = randi_range(0,9) + 65
+		var b = randi_range(9, 18) + 65
+		var c = randi_range(18, 25) + 65
+		new_name = "{0}{1}{2}".format([char(a), char(b), char(c)])
+		if !used_names.has(new_name):
 			break;
-	used_names.append(name)
-	return name
+	used_names.append(new_name)
+	return new_name

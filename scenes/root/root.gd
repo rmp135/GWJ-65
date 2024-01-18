@@ -1,6 +1,6 @@
 extends Control
 
-@onready var pause_overlay: Control = $PauseOverlay
+@onready var pause_overlay: Control = %PauseOverlay
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

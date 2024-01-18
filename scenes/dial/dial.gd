@@ -5,8 +5,9 @@ class_name Dial
 @onready var label_6: Label = $Label6
 
 var text: String = "D123"
+
 # between 0 and 4
-var index: int = 0
+var index := randi_range(0,4)
 
 func _ready() -> void:
 	text  = NameGenerator.get_name_string()
@@ -14,9 +15,6 @@ func _ready() -> void:
 
 var value: String:
 	get: return str(index)
-
-func get_random_value() -> String:
-	return str(randi_range(0, 4))
 
 func _on_texture_button_pressed() -> void:
 	index += 1

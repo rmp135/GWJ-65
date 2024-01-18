@@ -12,7 +12,7 @@ extends Node2D
 func _ready() -> void:
 	var all_leds = leds_container.get_children()
 	# 65 - 90 A - Z
-	var start_number = randi_range(1, 8)
+	var start_number = randi_range(1, 7)
 	top_left.text = str(start_number)
 	top_middle.text = str(start_number + 1)
 	top_right.text = str(start_number + 2)
@@ -23,7 +23,6 @@ func _ready() -> void:
 	left_bottom.text = char(start_letter + 2)
 	for i in all_leds.size():
 		var led : LEDArrayLED = all_leds[i]
-		var l = start_number + 0
 		led.label = "{0}{1}".format([start_number + i % 3, char(start_letter + i / 3)])
 	
 	# The LEDs are ordered left to right but the manual is easier to read top to bottom.

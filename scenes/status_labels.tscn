@@ -1,0 +1,87 @@
+[gd_scene load_steps=9 format=3 uid="uid://btqwcxy4oeq31"]
+
+[ext_resource type="Script" path="res://scenes/status_labels.gd" id="1_82td2"]
+[ext_resource type="FontFile" uid="uid://enfp4afuixsa" path="res://sprites/m5x7.ttf" id="1_anpuo"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_dq41r"]
+font = ExtResource("1_anpuo")
+font_size = 40
+font_color = Color(0.890196, 0.298039, 0.231373, 1)
+outline_color = Color(1, 0.67451, 0.623529, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ieqxu"]
+font = ExtResource("1_anpuo")
+font_size = 40
+font_color = Color(0.552941, 0.611765, 0.576471, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_jhllp"]
+font = ExtResource("1_anpuo")
+font_size = 40
+font_color = Color(0.552941, 0.611765, 0.576471, 1)
+
+[sub_resource type="Animation" id="Animation_kuo71"]
+resource_name = "sign_in_animation"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AwaitingSignInLabel:label_settings:font_color")
+tracks/0/interp = 0
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Color(0.890196, 0.298039, 0.231373, 1), Color(0.552941, 0.611765, 0.576471, 1), Color(0.890196, 0.298039, 0.231373, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_bcdog"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AwaitingSignInLabel:label_settings:font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.890196, 0.298039, 0.231373, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_suei6"]
+_data = {
+"RESET": SubResource("Animation_bcdog"),
+"sign_in_animation": SubResource("Animation_kuo71")
+}
+
+[node name="StatusLabels" type="HBoxContainer"]
+offset_right = 750.0
+offset_bottom = 37.0
+alignment = 1
+script = ExtResource("1_82td2")
+
+[node name="AwaitingSignInLabel" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Awaiting Sign In"
+label_settings = SubResource("LabelSettings_dq41r")
+
+[node name="ShiftLabel" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Shift In Progress"
+label_settings = SubResource("LabelSettings_ieqxu")
+
+[node name="AwaitingAlarmsLabel" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Awaiting Alarms"
+label_settings = SubResource("LabelSettings_jhllp")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_suei6")
+}
+autoplay = "sign_in_animation"

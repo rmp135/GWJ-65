@@ -13,5 +13,5 @@ func get_random_value() -> String:
 	return ""
 
 # gets the explanation text required in the manual
-func get_manual_text() -> String:
+func get_manual_text(_value: String) -> String:
 	return "Indicator example must be in the off position"

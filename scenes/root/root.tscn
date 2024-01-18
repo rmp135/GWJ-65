@@ -8,23 +8,17 @@
 [ext_resource type="PackedScene" uid="uid://cjnr1s5yd3jrj" path="res://scenes/dial/dial.tscn" id="6_bksop"]
 [ext_resource type="PackedScene" uid="uid://mbhtsefeaj2g" path="res://scenes/numpad/numpad.tscn" id="7_0x0n1"]
 [ext_resource type="PackedScene" uid="uid://bptqmify5gwxy" path="res://scenes/led_array/led_array.tscn" id="8_4q01j"]
-[ext_resource type="Script" path="res://scenes/Button.gd" id="9_mdvg3"]
 [ext_resource type="PackedScene" uid="uid://dgrul6e33kwel" path="res://scenes/fault_manager/fault_manager.tscn" id="10_n36d1"]
+[ext_resource type="PackedScene" uid="uid://bhupfbnu53rnc" path="res://scenes/capacitor_level/capacitor_level.tscn" id="11_vhjk6"]
 [ext_resource type="PackedScene" uid="uid://dsue7fs33ssif" path="res://scenes/pause_overlay/pause_overlay.tscn" id="11_xdrxu"]
-[ext_resource type="Script" path="res://scenes/heat_indicator/heat_indicator.gd" id="12_eyyx2"]
-[ext_resource type="Script" path="res://scenes/loading_led.gd" id="13_b4qgp"]
+[ext_resource type="PackedScene" uid="uid://coog8dp62bopo" path="res://scenes/sign_in_manager/sign_in_manager.tscn" id="14_mr6n6"]
+[ext_resource type="PackedScene" uid="uid://blw4v44o04jvq" path="res://scenes/shift_complete_overlay/shift_complete_overlay.tscn" id="15_qmn2n"]
+[ext_resource type="PackedScene" uid="uid://uj3v0nws47qi" path="res://scenes/game_over_overlay/game_over_overlay.tscn" id="16_xo0ke"]
+[ext_resource type="PackedScene" uid="uid://btqwcxy4oeq31" path="res://scenes/status_labels.tscn" id="16_y60on"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dluik"]
 atlas = ExtResource("2_bv130")
 region = Rect2(0, 0, 240, 147)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_p14du"]
-atlas = ExtResource("2_bv130")
-region = Rect2(318, 177, 27, 12)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_202od"]
-atlas = ExtResource("2_bv130")
-region = Rect2(315, 156, 33, 18)
 
 [node name="Root" type="Control"]
 layout_mode = 3
@@ -49,9 +43,6 @@ axis_stretch_horizontal = 1
 
 [node name="ButtonGrid" parent="." instance=ExtResource("3_3k35s")]
 position = Vector2(47, 385)
-
-[node name="Manual" parent="." instance=ExtResource("4_7xx61")]
-position = Vector2(800, 0)
 
 [node name="Gauge" parent="." instance=ExtResource("5_bykmd")]
 position = Vector2(145, 211)
@@ -85,36 +76,31 @@ offset_bottom = 43.0
 [node name="LEDArray" parent="." instance=ExtResource("8_4q01j")]
 position = Vector2(294, 380)
 
-[node name="Button" type="Button" parent="."]
-layout_mode = 0
-offset_left = 21.0
-offset_top = 52.0
-offset_right = 100.0
-offset_bottom = 82.0
-text = "Start"
-script = ExtResource("9_mdvg3")
+[node name="FaultManager" parent="." instance=ExtResource("10_n36d1")]
 
-[node name="FaultManager" parent="." node_paths=PackedStringArray("manual") instance=ExtResource("10_n36d1")]
-manual = NodePath("../Manual")
+[node name="SignInManager" parent="." instance=ExtResource("14_mr6n6")]
 
-[node name="PauseOverlay" parent="." instance=ExtResource("11_xdrxu")]
-process_mode = 3
-visible = false
-layout_mode = 1
+[node name="Manual" parent="." node_paths=PackedStringArray("fault_manager", "sign_in_manager") instance=ExtResource("4_7xx61")]
+position = Vector2(800, 0)
+fault_manager = NodePath("../FaultManager")
+sign_in_manager = NodePath("../SignInManager")
 
-[node name="HeatIndicator" type="Node2D" parent="."]
-position = Vector2(736, 351)
-script = ExtResource("12_eyyx2")
+[node name="HeatIndicator" parent="." instance=ExtResource("11_vhjk6")]
+position = Vector2(732, 368)
 
-[node name="LoadingLED" type="Node2D" parent="HeatIndicator"]
+[node name="Overlays" type="Node" parent="."]
+
+[node name="PauseOverlay" parent="Overlays" instance=ExtResource("11_xdrxu")]
 unique_name_in_owner = true
-script = ExtResource("13_b4qgp")
-
-[node name="LoadingLEDOff" type="Sprite2D" parent="HeatIndicator/LoadingLED"]
-texture = SubResource("AtlasTexture_p14du")
-
-[node name="LoadingLEDOn" type="Sprite2D" parent="HeatIndicator/LoadingLED"]
 visible = false
-texture = SubResource("AtlasTexture_202od")
 
-[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
+[node name="ShiftCompleteOverlay" parent="Overlays" instance=ExtResource("15_qmn2n")]
+visible = false
+
+[node name="GameOverOverlay" parent="Overlays" instance=ExtResource("16_xo0ke")]
+visible = false
+
+[node name="StatusLabels" parent="." instance=ExtResource("16_y60on")]
+layout_mode = 0
+offset_top = 22.0
+offset_bottom = 59.0

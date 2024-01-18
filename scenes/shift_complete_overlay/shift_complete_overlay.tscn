@@ -1,21 +1,27 @@
-[gd_scene load_steps=5 format=3 uid="uid://dsue7fs33ssif"]
+[gd_scene load_steps=6 format=3 uid="uid://blw4v44o04jvq"]
 
-[ext_resource type="Script" path="res://scenes/pause_overlay/pause_overlay.gd" id="1_5uy64"]
-[ext_resource type="FontFile" uid="uid://enfp4afuixsa" path="res://sprites/m5x7.ttf" id="1_mmyfn"]
+[ext_resource type="Script" path="res://scenes/shift_complete_overlay/shift_complete_overlay.gd" id="1_l7q8c"]
+[ext_resource type="FontFile" uid="uid://enfp4afuixsa" path="res://sprites/m5x7.ttf" id="2_pbxuw"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_khvyt"]
-font = ExtResource("1_mmyfn")
+font = ExtResource("2_pbxuw")
 font_size = 101
 outline_size = 5
 outline_color = Color(0, 0, 0, 1)
 
-[sub_resource type="LabelSettings" id="LabelSettings_j62dw"]
-font = ExtResource("1_mmyfn")
+[sub_resource type="LabelSettings" id="LabelSettings_povoh"]
+font = ExtResource("2_pbxuw")
 font_size = 41
 outline_size = 5
 outline_color = Color(0, 0, 0, 1)
 
-[node name="PauseOverlay" type="Control"]
+[sub_resource type="LabelSettings" id="LabelSettings_kr3op"]
+font = ExtResource("2_pbxuw")
+font_size = 41
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[node name="ShiftCompleteOverlay" type="Control"]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -23,7 +29,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_5uy64")
+script = ExtResource("1_l7q8c")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -49,7 +55,7 @@ layout_mode = 2
 
 [node name="PauseLabel" type="Label" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
-text = "Paused"
+text = "Shift Complete"
 label_settings = SubResource("LabelSettings_khvyt")
 horizontal_alignment = 1
 
@@ -57,16 +63,32 @@ horizontal_alignment = 1
 unique_name_in_owner = true
 layout_mode = 2
 text = "Seed: 123213"
-label_settings = SubResource("LabelSettings_j62dw")
+label_settings = SubResource("LabelSettings_povoh")
 horizontal_alignment = 1
 
-[node name="ResumeButton" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="AlarmsLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
-text = "Resume"
+text = "Alarms reset: 23"
+label_settings = SubResource("LabelSettings_kr3op")
+horizontal_alignment = 1
+
+[node name="CapacitorLevel" type="Label" parent="CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Capacitor load: 55%"
+label_settings = SubResource("LabelSettings_kr3op")
+horizontal_alignment = 1
+
+[node name="TotalTimeLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+text = "Total alarm time: 15 seconds"
+label_settings = SubResource("LabelSettings_kr3op")
+horizontal_alignment = 1
 
 [node name="QuitButton" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
 text = "Quit"
 
-[connection signal="pressed" from="CenterContainer/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

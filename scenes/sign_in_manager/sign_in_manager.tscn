@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://coog8dp62bopo"]
+
+[ext_resource type="Script" path="res://scenes/sign_in_manager/sign_in_manager.gd" id="1_lypx4"]
+
+[node name="SignInManager" type="Node"]
+script = ExtResource("1_lypx4")

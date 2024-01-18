@@ -1,21 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://dsue7fs33ssif"]
+[gd_scene load_steps=5 format=3 uid="uid://uj3v0nws47qi"]
 
-[ext_resource type="Script" path="res://scenes/pause_overlay/pause_overlay.gd" id="1_5uy64"]
-[ext_resource type="FontFile" uid="uid://enfp4afuixsa" path="res://sprites/m5x7.ttf" id="1_mmyfn"]
+[ext_resource type="Script" path="res://scenes/game_over_overlay/game_over_overlay.gd" id="1_5b2f4"]
+[ext_resource type="FontFile" uid="uid://enfp4afuixsa" path="res://sprites/m5x7.ttf" id="2_s4bdm"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_khvyt"]
-font = ExtResource("1_mmyfn")
+font = ExtResource("2_s4bdm")
 font_size = 101
 outline_size = 5
 outline_color = Color(0, 0, 0, 1)
 
-[sub_resource type="LabelSettings" id="LabelSettings_j62dw"]
-font = ExtResource("1_mmyfn")
+[sub_resource type="LabelSettings" id="LabelSettings_povoh"]
+font = ExtResource("2_s4bdm")
 font_size = 41
 outline_size = 5
 outline_color = Color(0, 0, 0, 1)
 
-[node name="PauseOverlay" type="Control"]
+[node name="GameOverOverlay" type="Control"]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -23,7 +23,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_5uy64")
+script = ExtResource("1_5b2f4")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -49,24 +49,26 @@ layout_mode = 2
 
 [node name="PauseLabel" type="Label" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
-text = "Paused"
+text = "Game Over"
 label_settings = SubResource("LabelSettings_khvyt")
+horizontal_alignment = 1
+
+[node name="FiredLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "You have been fired."
+label_settings = SubResource("LabelSettings_povoh")
 horizontal_alignment = 1
 
 [node name="SeedLabel" type="Label" parent="CenterContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Seed: 123213"
-label_settings = SubResource("LabelSettings_j62dw")
+text = "Seed 231123"
+label_settings = SubResource("LabelSettings_povoh")
 horizontal_alignment = 1
-
-[node name="ResumeButton" type="Button" parent="CenterContainer/VBoxContainer"]
-layout_mode = 2
-text = "Resume"
 
 [node name="QuitButton" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
 text = "Quit"
 
-[connection signal="pressed" from="CenterContainer/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

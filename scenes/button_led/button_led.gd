@@ -12,15 +12,13 @@ class_name ButtonLED
 
 var text: String
 
-func _process(delta):
+func _process(_delta):
 	blue_led.visible = !enabled
 	red_led.visible = enabled
 
-func set_name_string(name: String):
+func _ready():
 	text = NameGenerator.get_name_string()
 	label_2.text = text
-
-func _ready():
 	enabled = randi_range(0, 1) == 0
 	timer.wait_time = randf_range(5, 30)
 	timer.start()

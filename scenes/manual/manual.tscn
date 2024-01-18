@@ -76,15 +76,17 @@ offset_right = 460.0
 offset_bottom = 673.0
 text = "Congratulations citizen #332452 on winning the annual national employment raffle! For the forseeable future, you will be solely responsible for the operation and maintenace of this T-23-X4 Nuclear Processing and Enrichment Reactor. 
 
-This manual will cover the neccessary debugging and  corrections in the event of manual intervention for the Enrichment Reactor. Failure to strictly adhere to this manual will result in reactor overload and catastrophic meltdown.
+This manual will cover the neccessary diagnosis and corrections in the event of manual intervention for the Enrichment Reactor. Failure to strictly adhere to this manual will result in reactor overload and catastrophic meltdown.
 
 Overload Failsafe
 
-The reactors capacitors have the capability to store excess power during a system alarm. In the event  that the capacitors are go beyond their stated safe usage, the reactor will be immediately shut down. It is your responsibility to ensure this never happens. 
+The reactors have the capability to store excess power during a system alarm. In the event that the capacitors go beyond their safe usage, the reactor will immediately be shut down. It is your responsibility to ensure this never happens. 
 
 Safety and Alarms
 
-In extremely rare circumstances the system may require human input and will alert via an LED illuminating in a alarms panel. Find the problem instrument and refer to the rest of the instruction manual as to how to diagnose this alarm and bring the system back to nominal working order.
+In extremely rare circumstances the system may require human input and will alert via a flashing LED on the instrument panel. Find the problem instrument and refer to the rest of the instruction manual as to how to diagnose this alarm and bring the system back to nominal working order.
+
+To start the reactor, follow the Sign In Procedure at the end of this manual. When your shift has finished, ensure all alarms are disabled.
 
 Alarms
 
@@ -94,6 +96,7 @@ autowrap_mode = 2
 max_lines_visible = 25
 
 [node name="NextButton" type="Button" parent="."]
+unique_name_in_owner = true
 offset_left = 341.0
 offset_top = 690.0
 offset_right = 450.0
