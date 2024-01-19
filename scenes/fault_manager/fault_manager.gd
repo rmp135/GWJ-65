@@ -29,6 +29,7 @@ func _ready() -> void:
 
 func _on_fault_timeout() -> void:
 	if GameManager.game_state == GameManager.GameState.SHIFT_OVER: 
+		fault_timer.stop()
 		return
 	var new_faulting = faults.filter(func(f): return !f.is_faulting).pick_random() as Fault
 	new_faulting.trigger()

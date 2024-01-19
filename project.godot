@@ -30,7 +30,7 @@ window/dpi/allow_hidpi=false
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/script-ide/plugin.cfg")
+enabled=PackedStringArray()
 
 [input]
 

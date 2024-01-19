@@ -1,0 +1,42 @@
+[gd_scene load_steps=11 format=3 uid="uid://d4ahxdiuplehv"]
+
+[ext_resource type="Script" path="res://scenes/click_player/click_player.gd" id="1_4gsw7"]
+[ext_resource type="Script" path="res://scenes/click_player/click_sound.gd" id="2_do7oe"]
+[ext_resource type="AudioStream" uid="uid://j30gikv1utf7" path="res://scenes/click_player/click_1.wav" id="3_n6dg8"]
+[ext_resource type="AudioStream" uid="uid://bkdiul0oisn2j" path="res://scenes/click_player/click_2.wav" id="4_dacoj"]
+[ext_resource type="AudioStream" uid="uid://ex6uj56o4p58" path="res://scenes/click_player/click_3.wav" id="5_e8bua"]
+[ext_resource type="AudioStream" uid="uid://bwms1i4mdrulx" path="res://scenes/click_player/click_5.wav" id="7_maku8"]
+
+[sub_resource type="Resource" id="Resource_y2qf0"]
+script = ExtResource("2_do7oe")
+up_position = 0.2
+sound = ExtResource("3_n6dg8")
+
+[sub_resource type="Resource" id="Resource_slsut"]
+script = ExtResource("2_do7oe")
+up_position = 0.2
+sound = ExtResource("4_dacoj")
+
+[sub_resource type="Resource" id="Resource_3twdp"]
+script = ExtResource("2_do7oe")
+up_position = 0.2
+sound = ExtResource("5_e8bua")
+
+[sub_resource type="Resource" id="Resource_eugcl"]
+script = ExtResource("2_do7oe")
+up_position = 0.2
+sound = ExtResource("7_maku8")
+
+[node name="ClickPlayer" type="Node"]
+script = ExtResource("1_4gsw7")
+clicks = Array[ExtResource("2_do7oe")]([SubResource("Resource_y2qf0"), SubResource("Resource_slsut"), SubResource("Resource_3twdp"), SubResource("Resource_eugcl")])
+
+[node name="ClickDownPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("3_n6dg8")
+
+[node name="ClickUpPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("3_n6dg8")
+
+[connection signal="finished" from="ClickUpPlayer" to="." method="_on_click_up_player_finished"]

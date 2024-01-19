@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://c3p3nco4j15tj"]
+[gd_scene load_steps=12 format=3 uid="uid://c3p3nco4j15tj"]
 
 [ext_resource type="Script" path="res://scenes/button_led/button_led.gd" id="1_kcc8r"]
 [ext_resource type="FontFile" uid="uid://enfp4afuixsa" path="res://sprites/m5x7.ttf" id="2_156qn"]
 [ext_resource type="Script" path="res://scenes/button_led/button_led_indicator.gd" id="4_58lk6"]
 [ext_resource type="Texture2D" uid="uid://dh3mlfs6d0uyb" path="res://sprites/spritesheet.png" id="4_v3uum"]
 [ext_resource type="Script" path="res://scenes/button_led/button_led_actionable.gd" id="5_qapvl"]
+[ext_resource type="PackedScene" uid="uid://d4ahxdiuplehv" path="res://scenes/click_player/click_player.tscn" id="6_tgnuj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xicft"]
 atlas = ExtResource("4_v3uum")
@@ -52,7 +53,8 @@ texture = SubResource("AtlasTexture_y1fmv")
 position = Vector2(34, 39)
 texture = SubResource("AtlasTexture_k4rtw")
 
-[node name="Label2" type="Label" parent="Offset"]
+[node name="Label" type="Label" parent="Offset"]
+unique_name_in_owner = true
 offset_left = 14.0
 offset_top = 6.0
 offset_right = 55.0
@@ -68,7 +70,12 @@ script = ExtResource("4_58lk6")
 [node name="Actionable" type="Node" parent="."]
 script = ExtResource("5_qapvl")
 
+[node name="ClickPlayer" parent="." instance=ExtResource("6_tgnuj")]
+unique_name_in_owner = true
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="button_down" from="TextureButton" to="." method="_on_texture_button_2_button_down"]
+[connection signal="button_down" from="TextureButton" to="ClickPlayer" method="_on_button_down"]
 [connection signal="button_up" from="TextureButton" to="." method="_on_texture_button_2_button_up"]
+[connection signal="button_up" from="TextureButton" to="ClickPlayer" method="_on_button_up"]
 [connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]

@@ -3,14 +3,18 @@ class_name ButtonLED
 
 @onready var red_led: Sprite2D = $Offset/RedLED
 @onready var blue_led: Sprite2D = $Offset/BlueLED
-@onready var label_2 = $Offset/Label2
+@onready var label = %Label
 @onready var timer: Timer = $Timer
 @onready var offset: Node2D = $Offset
 @onready var actionable: Node = $Actionable
+@onready var click_player = %ClickPlayer
+
 
 @export var enabled := false
 
-var text: String
+var text: String :
+	get: return label.text
+	set(value): label.text = value
 
 func _process(_delta):
 	blue_led.visible = !enabled
@@ -18,7 +22,7 @@ func _process(_delta):
 
 func _ready():
 	text = NameGenerator.get_name_string()
-	label_2.text = text
+	label.text = text
 	enabled = randi_range(0, 1) == 0
 	timer.wait_time = randf_range(5, 30)
 	timer.start()
