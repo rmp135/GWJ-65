@@ -3,6 +3,8 @@ class_name CapacitorLevel
 
 @onready var loading_led: LoadingLED = %LoadingLED
 @onready var label: Label = $Label
+@onready var audio_stream_player: AudioStreamPlayer = %AudioStreamPlayer
+@onready var alarm_timer: Timer = %AlarmTimer
 
 var leds : Array[LoadingLED] = []
 
@@ -24,3 +26,7 @@ func _process(_delta: float) -> void:
 	var leds_to_enable = floori(lerp(1, 16, GameManager.capacitor_value as float/100))
 	for i in leds_to_enable:
 		leds[i].set_on()
+
+func _on_alarm_timer_timeout() -> void:
+	audio_stream_player.play()
+	alarm_timer.start(lerpf(2, 0.1, GameManager.capacitor_value as float / 100))
