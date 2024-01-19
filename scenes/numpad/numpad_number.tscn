@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://114trb5kklu0"]
+[gd_scene load_steps=8 format=3 uid="uid://114trb5kklu0"]
 
 [ext_resource type="Texture2D" uid="uid://dh3mlfs6d0uyb" path="res://sprites/spritesheet.png" id="1_3insr"]
 [ext_resource type="Script" path="res://scenes/numpad/numpad_number.gd" id="2_sq4dd"]
 [ext_resource type="FontFile" uid="uid://enfp4afuixsa" path="res://sprites/m5x7.ttf" id="3_5s1j3"]
+[ext_resource type="PackedScene" uid="uid://d4ahxdiuplehv" path="res://scenes/click_player/click_player.tscn" id="4_p6705"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s1nmo"]
 atlas = ExtResource("1_3insr")
@@ -34,4 +35,8 @@ offset_bottom = 38.0
 label_settings = SubResource("LabelSettings_a304f")
 horizontal_alignment = 1
 
+[node name="ClickPlayer" parent="." instance=ExtResource("4_p6705")]
+
+[connection signal="button_down" from="." to="ClickPlayer" method="_on_button_down"]
+[connection signal="button_up" from="." to="ClickPlayer" method="_on_button_up"]
 [connection signal="pressed" from="." to="." method="_on_pressed"]

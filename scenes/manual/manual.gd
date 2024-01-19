@@ -3,6 +3,7 @@ class_name Manual
 
 @export var fault_manager : FaultManager
 @export var sign_in_manager : SignInManager
+@export var flip_sounds : Array[AudioStreamWAV] = []
 
 @onready var text: Label = %Instructions
 @onready var previous_button: Button = %PreviousButton
@@ -36,3 +37,12 @@ func update_page() -> void:
 	
 	text.lines_skipped = (page - 1) * 25
 	next_button.visible = text.visible_characters != 0
+	_play_flip()
+
+func _play_flip():
+	var audio_player : AudioStreamPlayer = AudioStreamPlayer.new()
+	audio_player.stream = flip_sounds.pick_random()
+	add_child(audio_player)
+	audio_player.play()
+	await audio_player.finished
+	remove_child(audio_player)
