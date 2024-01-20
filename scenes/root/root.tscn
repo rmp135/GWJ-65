@@ -12,11 +12,11 @@
 [ext_resource type="PackedScene" uid="uid://bhupfbnu53rnc" path="res://scenes/capacitor_level/capacitor_level.tscn" id="11_vhjk6"]
 [ext_resource type="PackedScene" uid="uid://dsue7fs33ssif" path="res://scenes/pause_overlay/pause_overlay.tscn" id="11_xdrxu"]
 [ext_resource type="PackedScene" uid="uid://coog8dp62bopo" path="res://scenes/sign_in_manager/sign_in_manager.tscn" id="14_mr6n6"]
+[ext_resource type="PackedScene" uid="uid://btqwcxy4oeq31" path="res://scenes/status_labels/status_labels.tscn" id="15_a7arf"]
 [ext_resource type="PackedScene" uid="uid://blw4v44o04jvq" path="res://scenes/shift_complete_overlay/shift_complete_overlay.tscn" id="15_qmn2n"]
-[ext_resource type="AudioStream" uid="uid://itrb8gxqsjgc" path="res://scenes/root/sound.wav" id="16_lxo4w"]
+[ext_resource type="AudioStream" uid="uid://itrb8gxqsjgc" path="res://scenes/root/bootup_sound.wav" id="16_kayae"]
 [ext_resource type="PackedScene" uid="uid://uj3v0nws47qi" path="res://scenes/game_over_overlay/game_over_overlay.tscn" id="16_xo0ke"]
-[ext_resource type="PackedScene" uid="uid://btqwcxy4oeq31" path="res://scenes/status_labels.tscn" id="16_y60on"]
-[ext_resource type="PackedScene" uid="uid://vim5ey5pjixs" path="res://fade_in_overlay.tscn" id="17_euu0f"]
+[ext_resource type="PackedScene" uid="uid://vim5ey5pjixs" path="res://scenes/fade_in_overlay/fade_in_overlay.tscn" id="17_2wosl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dluik"]
 atlas = ExtResource("2_bv130")
@@ -91,6 +91,7 @@ sign_in_manager = NodePath("../SignInManager")
 position = Vector2(732, 368)
 
 [node name="Overlays" type="Node" parent="."]
+unique_name_in_owner = true
 
 [node name="PauseOverlay" parent="Overlays" instance=ExtResource("11_xdrxu")]
 unique_name_in_owner = true
@@ -102,15 +103,16 @@ visible = false
 [node name="GameOverOverlay" parent="Overlays" instance=ExtResource("16_xo0ke")]
 visible = false
 
-[node name="StatusLabels" parent="." instance=ExtResource("16_y60on")]
+[node name="StatusLabels" parent="." instance=ExtResource("15_a7arf")]
 layout_mode = 0
 offset_top = 22.0
 offset_bottom = 59.0
 
 [node name="StartupPlayer" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
-stream = ExtResource("16_lxo4w")
+stream = ExtResource("16_kayae")
+bus = &"Effects"
 
-[node name="FadeInOverlay" parent="." instance=ExtResource("17_euu0f")]
+[node name="FadeInOverlay" parent="." instance=ExtResource("17_2wosl")]
 visible = false
 layout_mode = 1

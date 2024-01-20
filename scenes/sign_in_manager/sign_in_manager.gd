@@ -23,7 +23,7 @@ func _ready() -> void:
 	action_value = action_node.get_random_value()
 
 func _on_action(action: String) -> void:
-	if !GameManager.game_state == GameManager.GameState.STARTED and action_value == action and indicator_node.get_current_value() == indicator_value:
+	if GameManager.game_state == GameManager.GameState.WAITING and action_value == action and indicator_node.get_current_value() == indicator_value:
 		GameManager.start_game()
 
 func get_manual() -> String:

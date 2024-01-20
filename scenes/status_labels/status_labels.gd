@@ -11,13 +11,13 @@ const color_on := Color(0.89, 0.298, 0.231)
 func _ready() -> void:
 	GameManager.game_started.connect(_on_game_started)
 	GameManager.shift_over.connect(_on_shift_over)
+	awaiting_alarms_label.label_settings.font_color = color_off
 
 func _on_shift_over():
-	awaiting_alarms_label.label_settings.font_color = color_on	
+	awaiting_alarms_label.label_settings.font_color = color_on
 	shift_label.label_settings.font_color = color_off
 	
 func _on_game_started():
 	awaiting_sign_in_label.label_settings.font_color = color_off
 	shift_label.label_settings.font_color = color_on
-	animation_player.stop()
-	
+	animation_player.play("RESET")

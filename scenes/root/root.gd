@@ -2,11 +2,18 @@ extends Control
 
 @onready var pause_overlay: Control = %PauseOverlay
 @onready var startup_player: AudioStreamPlayer = %StartupPlayer
+@onready var overlays: Node = %Overlays
+@onready var fade_in_overlay: FadeIn = $FadeInOverlay
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	GameManager.game_started.connect(_on_game_started)
-	pause_overlay.hide()
+	GameManager.capacitor_value = 0
+	GameManager.game_state = GameManager.GameState.WAITING
+	GameManager.alarms_reset = 0
+	fade_in_overlay.fade_in()
+	for overlay in overlays.get_children():
+		overlay.hide()
 	
 func _on_game_started():
 	startup_player.play()

@@ -34,9 +34,13 @@ clicks = Array[ExtResource("2_do7oe")]([SubResource("Resource_y2qf0"), SubResour
 [node name="ClickDownPlayer" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("3_n6dg8")
+volume_db = -6.71
+bus = &"Effects"
 
 [node name="ClickUpPlayer" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("3_n6dg8")
+volume_db = -6.0
+bus = &"Effects"
 
 [connection signal="finished" from="ClickUpPlayer" to="." method="_on_click_up_player_finished"]

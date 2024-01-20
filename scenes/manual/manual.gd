@@ -41,6 +41,7 @@ func update_page() -> void:
 
 func _play_flip():
 	var audio_player : AudioStreamPlayer = AudioStreamPlayer.new()
+	audio_player.bus = "Effects"
 	audio_player.stream = flip_sounds.pick_random()
 	add_child(audio_player)
 	audio_player.play()

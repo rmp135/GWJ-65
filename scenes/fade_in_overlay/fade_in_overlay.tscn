@@ -1,18 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://vim5ey5pjixs"]
+[gd_scene load_steps=6 format=3 uid="uid://vim5ey5pjixs"]
 
-[sub_resource type="Animation" id="Animation_od8hm"]
-resource_name = "fade_in_animation"
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:color:a")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 1)
-}
+[ext_resource type="Script" path="res://scenes/fade_in_overlay/fade_in_overlay.gd" id="1_1rq27"]
 
 [sub_resource type="Animation" id="Animation_umk6w"]
 length = 0.001
@@ -28,10 +16,39 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0)
 }
 
+[sub_resource type="Animation" id="Animation_od8hm"]
+resource_name = "fade_in_animation"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+
+[sub_resource type="Animation" id="Animation_5h43q"]
+resource_name = "fade_out_animation"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wgwp0"]
 _data = {
 "RESET": SubResource("Animation_umk6w"),
-"fade_in_animation": SubResource("Animation_od8hm")
+"fade_in_animation": SubResource("Animation_od8hm"),
+"fade_out_animation": SubResource("Animation_5h43q")
 }
 
 [node name="FadeInOverlay" type="Control"]
@@ -42,6 +59,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+script = ExtResource("1_1rq27")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -53,7 +71,8 @@ grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
 libraries = {
 "": SubResource("AnimationLibrary_wgwp0")
 }
-autoplay = "fade_in_animation"
+autoplay = "RESET"

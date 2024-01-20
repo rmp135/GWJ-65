@@ -52,4 +52,4 @@ func get_manual() -> String:
 
 func _on_fault_check_timer_timeout() -> void:
 	var faulting = _get_faulting_faults().size() as float
-	GameManager.capacitor_value += faulting / 2
+	GameManager.capacitor_value += faulting as float / 2

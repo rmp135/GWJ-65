@@ -127,6 +127,7 @@ autoplay = "logo_animation"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_f3ksd")
+volume_db = -8.0
 autoplay = true
 
 [connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]

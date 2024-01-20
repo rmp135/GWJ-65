@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dsue7fs33ssif"]
+[gd_scene load_steps=9 format=3 uid="uid://dsue7fs33ssif"]
 
 [ext_resource type="Script" path="res://scenes/pause_overlay/pause_overlay.gd" id="1_5uy64"]
 [ext_resource type="FontFile" uid="uid://enfp4afuixsa" path="res://sprites/m5x7.ttf" id="1_mmyfn"]
+[ext_resource type="AudioStream" uid="uid://j30gikv1utf7" path="res://scenes/click_player/click_1.wav" id="3_l3ch8"]
+[ext_resource type="AudioStream" uid="uid://kn5qo4by01xk" path="res://scenes/capacitor_level/alarm.wav" id="4_0xd2u"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_khvyt"]
 font = ExtResource("1_mmyfn")
@@ -12,6 +14,18 @@ outline_color = Color(0, 0, 0, 1)
 [sub_resource type="LabelSettings" id="LabelSettings_j62dw"]
 font = ExtResource("1_mmyfn")
 font_size = 41
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_f4jtc"]
+font = ExtResource("1_mmyfn")
+font_size = 32
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_yhumc"]
+font = ExtResource("1_mmyfn")
+font_size = 32
 outline_size = 5
 outline_color = Color(0, 0, 0, 1)
 
@@ -73,6 +87,59 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "Quit"
 
+[node name="SeedLabel2" type="Label" parent="CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Sound"
+label_settings = SubResource("LabelSettings_j62dw")
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="EffectsLabel" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Effects"
+label_settings = SubResource("LabelSettings_f4jtc")
+
+[node name="EffectsSlider" type="HSlider" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+max_value = 1.0
+step = 0.01
+value = 0.5
+
+[node name="EffectsPlayer" type="AudioStreamPlayer" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+stream = ExtResource("3_l3ch8")
+bus = &"Effects"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="AlarmLabel" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Alarm  "
+label_settings = SubResource("LabelSettings_yhumc")
+
+[node name="AlarmSlider" type="HSlider" parent="CenterContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+max_value = 1.0
+step = 0.01
+value = 0.5
+
+[node name="AlarmPlayer" type="AudioStreamPlayer" parent="CenterContainer/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+stream = ExtResource("4_0xd2u")
+bus = &"Alarm"
+
 [connection signal="pressed" from="CenterContainer/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/MainMenu" to="." method="_on_main_menu_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="drag_ended" from="CenterContainer/VBoxContainer/HBoxContainer/EffectsSlider" to="." method="_on_effects_slider_drag_ended"]
+[connection signal="value_changed" from="CenterContainer/VBoxContainer/HBoxContainer/EffectsSlider" to="." method="_on_effects_slider_value_changed"]
+[connection signal="drag_ended" from="CenterContainer/VBoxContainer/HBoxContainer2/AlarmSlider" to="." method="_on_alarm_slider_drag_ended"]
+[connection signal="value_changed" from="CenterContainer/VBoxContainer/HBoxContainer2/AlarmSlider" to="." method="_on_alarm_slider_value_changed"]
