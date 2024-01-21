@@ -31,5 +31,4 @@ func _on_alarm_timer_timeout() -> void:
 	if GameManager.capacitor_value == 0:
 		return
 	audio_stream_player.play()
-	audio_stream_player.bus = ""
 	alarm_timer.start(lerpf(3, 0.2, GameManager.capacitor_value as float / 100))
