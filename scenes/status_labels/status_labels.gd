@@ -12,6 +12,7 @@ func _ready() -> void:
 	GameManager.game_started.connect(_on_game_started)
 	GameManager.shift_over.connect(_on_shift_over)
 	awaiting_alarms_label.label_settings.font_color = color_off
+	shift_label.label_settings.font_color = color_off
 
 func _on_shift_over():
 	awaiting_alarms_label.label_settings.font_color = color_on

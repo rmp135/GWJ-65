@@ -36,7 +36,7 @@ func update_page() -> void:
 	cover_rect.visible = page == 0
 	
 	text.lines_skipped = (page - 1) * 25
-	next_button.visible = text.visible_characters != 0
+	next_button.visible = page < 4
 	_play_flip()
 
 func _play_flip():

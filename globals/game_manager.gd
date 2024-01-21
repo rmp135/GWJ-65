@@ -20,15 +20,9 @@ func start_game():
 	game_state = GameState.STARTED
 	game_started.emit()
 	# 4 minutes
-	get_tree().create_timer(10, false).timeout.connect(_on_shift_over)
-
-func _on_shift_over():
+	await get_tree().create_timer(240, false).timeout
 	game_state = GameState.SHIFT_OVER
 	shift_over.emit()
-
-func being_shift():
-	game_state = GameState.WAITING
-	shift_started.emit()
 
 func end_game():
 	game_state = GameState.OVER

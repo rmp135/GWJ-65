@@ -19,9 +19,9 @@ func _ready() -> void:
 		actionable.connect("action", _on_action)
 
 	for faultable in faultables:
-		var s = indicators.pick_random()
+		var indicator = indicators.pick_random()
 		var fault = Fault.new()
-		fault.indicators.append(s)
+		fault.indicators.append(indicator)
 		fault.faulting_node = faultable
 		fault.action_value = _find_action_value()
 		faults.append(fault)
