@@ -11,7 +11,8 @@ class_name Manual
 @onready var instructions_rect: NinePatchRect = %InstructionsRect
 @onready var cover_rect: NinePatchRect = %CoverRect
 
-var page: int = 0
+var page := 0
+var max_pages := 5
 
 func _ready() -> void:
 	previous_button.hide()
@@ -20,6 +21,8 @@ func _ready() -> void:
 	text.text += fault_manager.get_manual()
 	text.text += "\n\n"
 	text.text += sign_in_manager.get_manual()
+	max_pages = ceili(text.get_line_count() / 25) + 1
+	text.max_lines_visible = 25
 	
 func _on_button_pressed() -> void:
 	page = page + 1
@@ -36,7 +39,7 @@ func update_page() -> void:
 	cover_rect.visible = page == 0
 	
 	text.lines_skipped = (page - 1) * 25
-	next_button.visible = page < 4
+	next_button.visible = page < max_pages
 	_play_flip()
 
 func _play_flip():

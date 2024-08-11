@@ -62,7 +62,6 @@ horizontal_alignment = 1
 
 [node name="InstructionsRect" type="NinePatchRect" parent="."]
 unique_name_in_owner = true
-visible = false
 offset_right = 475.0
 offset_bottom = 767.0
 texture = SubResource("AtlasTexture_ngoo3")
@@ -98,7 +97,6 @@ Alarms
 "
 label_settings = SubResource("LabelSettings_7o0wj")
 autowrap_mode = 2
-max_lines_visible = 25
 
 [node name="NextButton" type="Button" parent="."]
 unique_name_in_owner = true
