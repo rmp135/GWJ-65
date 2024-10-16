@@ -13,6 +13,6 @@ func is_resolved() -> bool:
 func get_manual() -> String:
 	var lines: Array[String] = []
 	lines.append("Sign In Procedure:")
-	lines.append(indicator.get_manual_text())
+	lines.append(indicator.get_manual_text(action_value))
 	lines.append("Press key: {0}".format([action_value]))
 	return "\n".join(lines)

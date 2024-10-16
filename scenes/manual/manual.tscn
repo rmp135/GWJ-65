@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dfdc8m4o3u2j4"]
+[gd_scene load_steps=14 format=3 uid="uid://dfdc8m4o3u2j4"]
 
 [ext_resource type="Script" path="res://scenes/manual/manual.gd" id="1_ebhdm"]
 [ext_resource type="AudioStream" uid="uid://ci7uo11ijrln3" path="res://scenes/manual/page_flip.wav" id="2_dsv0w"]
@@ -7,6 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://5c07yamyaymb" path="res://scenes/manual/page_flip2.wav" id="3_cu8aa"]
 [ext_resource type="AudioStream" uid="uid://bugf3h37lje2" path="res://scenes/manual/page_flip3.wav" id="4_7eee2"]
 [ext_resource type="AudioStream" uid="uid://b2kfp8rd27o1g" path="res://scenes/manual/page_flip4.wav" id="5_p05b4"]
+[ext_resource type="FontFile" uid="uid://bnf1simfy7cse" path="res://DepartureMono-Regular.woff" id="8_5urv3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_duq1n"]
 atlas = ExtResource("2_jqre2")
@@ -26,6 +27,7 @@ atlas = ExtResource("2_jqre2")
 region = Rect2(429, 270, 201, 249)
 
 [sub_resource type="LabelSettings" id="LabelSettings_7o0wj"]
+font = ExtResource("8_5urv3")
 font_color = Color(0.0901961, 0.0901961, 0.0901961, 1)
 
 [node name="Manual" type="Node2D"]
@@ -97,6 +99,7 @@ Alarms
 "
 label_settings = SubResource("LabelSettings_7o0wj")
 autowrap_mode = 2
+clip_text = true
 
 [node name="NextButton" type="Button" parent="."]
 unique_name_in_owner = true

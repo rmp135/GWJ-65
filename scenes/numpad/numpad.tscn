@@ -8,7 +8,7 @@
 [sub_resource type="LabelSettings" id="LabelSettings_73kfd"]
 font = ExtResource("2_s0k1r")
 font_size = 45
-font_color = Color(0.305882, 0.305882, 0.305882, 1)
+font_color = Color(0.929412, 0.941176, 0.890196, 1)
 
 [node name="Numpad" type="Node2D"]
 script = ExtResource("1_fcu7m")
@@ -88,12 +88,14 @@ offset_left = 4.0
 offset_top = 276.0
 offset_right = 219.0
 offset_bottom = 316.0
+color = Color(0.407843, 0.435294, 0.4, 1)
 
 [node name="Output" type="Label" parent="."]
 offset_left = 9.0
 offset_top = 278.0
 offset_right = 217.0
 offset_bottom = 314.0
+text = "0012"
 label_settings = SubResource("LabelSettings_73kfd")
 horizontal_alignment = 1
 

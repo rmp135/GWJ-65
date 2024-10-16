@@ -14,7 +14,7 @@ func _ready() -> void:
 	var actions = get_tree().get_nodes_in_group("actionable") as Array[Actionable]
 	
 	for actionable in actions:
-		actionable.connect("action", _on_action)
+		actionable.action.connect(_on_action)
 	
 	indicator_node = indicators.pick_random()
 	indicator_value = indicator_node.get_random_value()

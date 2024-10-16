@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://d4kvb2gxy0lg8"]
+[gd_scene load_steps=20 format=3 uid="uid://d4kvb2gxy0lg8"]
 
 [ext_resource type="Script" path="res://scenes/root/root.gd" id="1_lreeu"]
 [ext_resource type="Texture2D" uid="uid://dh3mlfs6d0uyb" path="res://sprites/spritesheet.png" id="2_bv130"]
@@ -17,22 +17,33 @@
 [ext_resource type="AudioStream" uid="uid://itrb8gxqsjgc" path="res://scenes/root/bootup_sound.wav" id="16_kayae"]
 [ext_resource type="PackedScene" uid="uid://uj3v0nws47qi" path="res://scenes/game_over_overlay/game_over_overlay.tscn" id="16_xo0ke"]
 [ext_resource type="PackedScene" uid="uid://vim5ey5pjixs" path="res://scenes/fade_in_overlay/fade_in_overlay.tscn" id="17_2wosl"]
+[ext_resource type="AudioStream" uid="uid://y4pjrg4m8vo6" path="res://scenes/root/Generator.wav" id="18_pb34v"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dluik"]
 atlas = ExtResource("2_bv130")
 region = Rect2(0, 0, 240, 147)
 
-[node name="Root" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Root" type="Node2D"]
 script = ExtResource("1_lreeu")
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(638, 386)
+
+[node name="ColorRect" type="ColorRect" parent="Camera2D"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4999.5
+offset_top = -4999.5
+offset_right = 4999.5
+offset_bottom = 4999.5
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.407971, 0.461159, 0.400493, 1)
+
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
-layout_mode = 0
 offset_right = 766.0
 offset_bottom = 765.0
 texture = SubResource("AtlasTexture_dluik")
@@ -43,11 +54,11 @@ patch_margin_right = 12
 patch_margin_bottom = 15
 axis_stretch_horizontal = 1
 
-[node name="ButtonGrid" parent="." instance=ExtResource("3_3k35s")]
-position = Vector2(47, 385)
-
 [node name="Gauge" parent="." instance=ExtResource("5_bykmd")]
 position = Vector2(145, 211)
+
+[node name="Gauge2" parent="." instance=ExtResource("5_bykmd")]
+position = Vector2(309, 211)
 
 [node name="Gauge3" parent="." instance=ExtResource("5_bykmd")]
 position = Vector2(465, 211)
@@ -55,8 +66,8 @@ position = Vector2(465, 211)
 [node name="Gauge4" parent="." instance=ExtResource("5_bykmd")]
 position = Vector2(620, 211)
 
-[node name="Gauge2" parent="." instance=ExtResource("5_bykmd")]
-position = Vector2(309, 211)
+[node name="ButtonGrid" parent="." instance=ExtResource("3_3k35s")]
+position = Vector2(47, 385)
 
 [node name="Dial" parent="." instance=ExtResource("6_bksop")]
 position = Vector2(81, 616)
@@ -66,14 +77,6 @@ position = Vector2(294, 616)
 
 [node name="Numpad" parent="." instance=ExtResource("7_0x0n1")]
 position = Vector2(497, 384)
-
-[node name="ProgressBar" type="ProgressBar" parent="."]
-visible = false
-layout_mode = 0
-offset_left = 23.0
-offset_top = 16.0
-offset_right = 748.0
-offset_bottom = 43.0
 
 [node name="LEDArray" parent="." instance=ExtResource("8_4q01j")]
 position = Vector2(294, 380)
@@ -104,15 +107,18 @@ visible = false
 visible = false
 
 [node name="StatusLabels" parent="." instance=ExtResource("15_a7arf")]
-layout_mode = 0
 offset_top = 22.0
 offset_bottom = 59.0
+
+[node name="FadeInOverlay" parent="." instance=ExtResource("17_2wosl")]
+visible = false
 
 [node name="StartupPlayer" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("16_kayae")
 bus = &"Effects"
 
-[node name="FadeInOverlay" parent="." instance=ExtResource("17_2wosl")]
-visible = false
-layout_mode = 1
+[node name="GeneratorPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("18_pb34v")
+volume_db = -25.0
+autoplay = true

@@ -2,8 +2,6 @@ extends Node
 
 enum GameState { WAITING, STARTED, OVER, SHIFT_OVER, COMPLETE }
 
-signal shift_started
-
 signal game_started
 signal game_over
 

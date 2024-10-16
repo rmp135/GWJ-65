@@ -34,7 +34,7 @@ func _on_fault_timeout() -> void:
 	var new_faulting = faults.filter(func(f): return !f.is_faulting).pick_random() as Fault
 	new_faulting.trigger()
 	var number_of_faulting = _get_faulting_faults().size()
-	fault_timer.start(3 * (number_of_faulting + 1))
+	fault_timer.start((3 * (number_of_faulting + 1) as float) * randf_range(0.75, 1.25))
 
 func _on_action(action: String) -> void:
 	for fault: Fault in _get_faulting_faults():
