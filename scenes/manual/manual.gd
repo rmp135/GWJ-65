@@ -13,25 +13,24 @@ class_name Manual
 
 var pages: Array[String] = []
 
-var page := 0
+var page := -1
 
 func _ready() -> void:
 	text_label.text += fault_manager.get_manual()
 	text_label.text += "\n\n"
 	text_label.text += sign_in_manager.get_manual()
-	split_content_into_pages()
 	previous_button.hide()
 	cover_rect.show()
 	instructions_rect.hide()
+	split_content_into_pages()
 
 func _on_button_pressed() -> void:
-	page = page + 1
+	page += 1
 	update_page()
 
 func _on_previous_button_pressed() -> void:
-	if page > 0:
-		page -= 1
-		update_page()
+	page -= 1
+	update_page()
 
 func split_content_into_pages():
 	var temp_label := text_label.duplicate()
@@ -57,10 +56,12 @@ func split_content_into_pages():
 	temp_label.queue_free()
 
 func update_page() -> void:
-	cover_rect.visible = page == 0
-	text_label.bbcode_text = pages[page]
-	previous_button.visible = page != 0
-	instructions_rect.visible = page != pages.size() - 1
+	cover_rect.visible = page == -1
+	instructions_rect.visible = page > - 1
+	next_button.visible = page < pages.size() - 1
+	previous_button.visible = page != -1
+	if page > -1:
+		text_label.bbcode_text = pages[page]
 	_play_flip()
 
 func _play_flip():

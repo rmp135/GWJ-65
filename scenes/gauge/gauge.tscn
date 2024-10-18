@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dbqnwg310e52t"]
+[gd_scene load_steps=7 format=3 uid="uid://dbqnwg310e52t"]
 
 [ext_resource type="Texture2D" uid="uid://dh3mlfs6d0uyb" path="res://sprites/spritesheet.png" id="1_4xa8j"]
 [ext_resource type="Script" path="res://scenes/gauge/gauge.gd" id="1_rhabp"]
 [ext_resource type="PackedScene" uid="uid://bi4spfdfn8pqe" path="res://scenes/led/led.tscn" id="3_w0pqo"]
 [ext_resource type="Script" path="res://scenes/gauge/gauge_faultable.gd" id="4_4ka13"]
+[ext_resource type="Theme" uid="uid://ivvnre0jtvlo" path="res://main_theme.tres" id="4_hlrj6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_81erd"]
 atlas = ExtResource("1_4xa8j")
@@ -34,10 +35,12 @@ autostart = true
 position = Vector2(0, 120.5)
 
 [node name="Label" type="Label" parent="."]
-offset_left = -67.0
-offset_top = -67.0
-offset_right = 68.0
-offset_bottom = -44.0
+offset_left = -68.0
+offset_top = -69.0
+offset_right = 67.0
+offset_bottom = -29.0
+theme = ExtResource("4_hlrj6")
+theme_override_font_sizes/font_size = 26
 text = "F22"
 horizontal_alignment = 1
 

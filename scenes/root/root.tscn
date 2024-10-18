@@ -54,6 +54,14 @@ patch_margin_right = 12
 patch_margin_bottom = 15
 axis_stretch_horizontal = 1
 
+[node name="StatusLabels" parent="NinePatchRect" instance=ExtResource("15_a7arf")]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 23.0
+offset_right = 752.0
+offset_bottom = 55.0
+size_flags_horizontal = 0
+
 [node name="Gauge" parent="." instance=ExtResource("5_bykmd")]
 position = Vector2(145, 211)
 
@@ -105,10 +113,6 @@ visible = false
 
 [node name="GameOverOverlay" parent="Overlays" instance=ExtResource("16_xo0ke")]
 visible = false
-
-[node name="StatusLabels" parent="." instance=ExtResource("15_a7arf")]
-offset_top = 22.0
-offset_bottom = 59.0
 
 [node name="FadeInOverlay" parent="." instance=ExtResource("17_2wosl")]
 visible = false

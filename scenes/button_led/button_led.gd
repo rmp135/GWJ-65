@@ -44,5 +44,3 @@ func _on_texture_button_2_button_up() -> void:
 	timer.wait_time = randf_range(30, 60)
 	timer.start()
 	offset.position.y -= 5
-
-

@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bptqmify5gwxy"]
+[gd_scene load_steps=4 format=3 uid="uid://bptqmify5gwxy"]
 
 [ext_resource type="Script" path="res://scenes/led_array/led_array.gd" id="1_bpcad"]
 [ext_resource type="PackedScene" uid="uid://d3n8t3dgg7wh7" path="res://scenes/led_array/led_array_led.tscn" id="3_ex3ub"]
+[ext_resource type="Theme" uid="uid://ivvnre0jtvlo" path="res://main_theme.tres" id="3_fosqt"]
 
 [node name="LEDArray" type="Node2D"]
 position = Vector2(1, -1)
@@ -42,6 +43,7 @@ position = Vector2(164, 160)
 offset_left = 18.0
 offset_right = 51.0
 offset_bottom = 23.0
+theme = ExtResource("3_fosqt")
 text = "A"
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
@@ -50,6 +52,7 @@ metadata/_edit_use_anchors_ = true
 offset_left = 81.0
 offset_right = 114.0
 offset_bottom = 23.0
+theme = ExtResource("3_fosqt")
 text = "A"
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
@@ -58,6 +61,7 @@ metadata/_edit_use_anchors_ = true
 offset_left = 148.0
 offset_right = 181.0
 offset_bottom = 23.0
+theme = ExtResource("3_fosqt")
 text = "A"
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
@@ -66,6 +70,7 @@ metadata/_edit_use_anchors_ = true
 offset_top = 29.0
 offset_right = 33.0
 offset_bottom = 52.0
+theme = ExtResource("3_fosqt")
 text = "A"
 metadata/_edit_use_anchors_ = true
 
@@ -73,6 +78,7 @@ metadata/_edit_use_anchors_ = true
 offset_top = 88.0
 offset_right = 33.0
 offset_bottom = 111.0
+theme = ExtResource("3_fosqt")
 text = "A"
 metadata/_edit_use_anchors_ = true
 
@@ -80,5 +86,6 @@ metadata/_edit_use_anchors_ = true
 offset_top = 149.0
 offset_right = 33.0
 offset_bottom = 172.0
+theme = ExtResource("3_fosqt")
 text = "A"
 metadata/_edit_use_anchors_ = true

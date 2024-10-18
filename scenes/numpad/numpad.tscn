@@ -2,12 +2,11 @@
 
 [ext_resource type="Script" path="res://scenes/numpad/numpad.gd" id="1_fcu7m"]
 [ext_resource type="PackedScene" uid="uid://114trb5kklu0" path="res://scenes/numpad/numpad_number.tscn" id="2_oaqjr"]
-[ext_resource type="FontFile" uid="uid://enfp4afuixsa" path="res://sprites/m5x7.ttf" id="2_s0k1r"]
+[ext_resource type="Theme" uid="uid://ivvnre0jtvlo" path="res://main_theme.tres" id="3_b0ek6"]
 [ext_resource type="Script" path="res://scenes/numpad/numpad_actionable.gd" id="5_4iim5"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_73kfd"]
-font = ExtResource("2_s0k1r")
-font_size = 45
+font_size = 26
 font_color = Color(0.929412, 0.941176, 0.890196, 1)
 
 [node name="Numpad" type="Node2D"]
@@ -68,6 +67,7 @@ text = "9"
 offset_top = 198.0
 offset_bottom = 264.0
 text = "CLEAR"
+font_size = 14
 
 [node name="0" parent="." instance=ExtResource("2_oaqjr")]
 offset_left = 71.0
@@ -82,6 +82,7 @@ offset_top = 198.0
 offset_right = 209.0
 offset_bottom = 264.0
 text = "ENTER"
+font_size = 14
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = 4.0
@@ -95,6 +96,7 @@ offset_left = 9.0
 offset_top = 278.0
 offset_right = 217.0
 offset_bottom = 314.0
+theme = ExtResource("3_b0ek6")
 text = "0012"
 label_settings = SubResource("LabelSettings_73kfd")
 horizontal_alignment = 1

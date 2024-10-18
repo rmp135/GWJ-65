@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dh3mlfs6d0uyb" path="res://sprites/spritesheet.png" id="1_3insr"]
 [ext_resource type="Script" path="res://scenes/numpad/numpad_number.gd" id="2_sq4dd"]
-[ext_resource type="FontFile" uid="uid://enfp4afuixsa" path="res://sprites/m5x7.ttf" id="3_5s1j3"]
+[ext_resource type="Theme" uid="uid://ivvnre0jtvlo" path="res://main_theme.tres" id="3_r306k"]
 [ext_resource type="PackedScene" uid="uid://d4ahxdiuplehv" path="res://scenes/click_player/click_player.tscn" id="4_p6705"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s1nmo"]
@@ -14,8 +14,7 @@ atlas = ExtResource("1_3insr")
 region = Rect2(240, 150, 69, 66)
 
 [sub_resource type="LabelSettings" id="LabelSettings_a304f"]
-font = ExtResource("3_5s1j3")
-font_size = 22
+font_size = 14
 font_color = Color(0.270588, 0.270588, 0.270588, 1)
 
 [node name="1" type="TextureButton"]
@@ -28,12 +27,15 @@ script = ExtResource("2_sq4dd")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_left = 14.0
-offset_top = 15.0
+offset_left = 11.0
+offset_top = 8.0
 offset_right = 59.0
-offset_bottom = 38.0
+offset_bottom = 49.0
+theme = ExtResource("3_r306k")
+text = "CLEAR"
 label_settings = SubResource("LabelSettings_a304f")
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="ClickPlayer" parent="." instance=ExtResource("4_p6705")]
 

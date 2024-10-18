@@ -1,22 +1,19 @@
 [gd_scene load_steps=9 format=3 uid="uid://btqwcxy4oeq31"]
 
 [ext_resource type="Script" path="res://scenes/status_labels/status_labels.gd" id="1_82td2"]
-[ext_resource type="FontFile" uid="uid://enfp4afuixsa" path="res://sprites/m5x7.ttf" id="1_anpuo"]
+[ext_resource type="Theme" uid="uid://ivvnre0jtvlo" path="res://main_theme.tres" id="2_d67al"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_dq41r"]
-font = ExtResource("1_anpuo")
-font_size = 40
+font_size = 20
 font_color = Color(0.552941, 0.611765, 0.576471, 1)
 outline_color = Color(1, 0.67451, 0.623529, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_ieqxu"]
-font = ExtResource("1_anpuo")
-font_size = 40
+font_size = 20
 font_color = Color(0.552941, 0.611765, 0.576471, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_jhllp"]
-font = ExtResource("1_anpuo")
-font_size = 40
+font_size = 20
 font_color = Color(0.552941, 0.611765, 0.576471, 1)
 
 [sub_resource type="Animation" id="Animation_bcdog"]
@@ -66,18 +63,21 @@ script = ExtResource("1_82td2")
 [node name="AwaitingSignInLabel" type="Label" parent="."]
 unique_name_in_owner = true
 layout_mode = 2
+theme = ExtResource("2_d67al")
 text = "Awaiting Sign In"
 label_settings = SubResource("LabelSettings_dq41r")
 
 [node name="ShiftLabel" type="Label" parent="."]
 unique_name_in_owner = true
 layout_mode = 2
+theme = ExtResource("2_d67al")
 text = "Shift In Progress"
 label_settings = SubResource("LabelSettings_ieqxu")
 
 [node name="AwaitingAlarmsLabel" type="Label" parent="."]
 unique_name_in_owner = true
 layout_mode = 2
+theme = ExtResource("2_d67al")
 text = "Awaiting Alarms"
 label_settings = SubResource("LabelSettings_jhllp")
 
